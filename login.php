@@ -2,6 +2,7 @@
         
         $emailIDInput = "email";
         $passwordIDInput = "passwd";
+        $variable = "";
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             if (isset($_POST[$emailIDInput]) && isset($_POST[$passwordIDInput])) 
