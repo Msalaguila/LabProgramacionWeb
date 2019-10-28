@@ -20,19 +20,19 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md" id="navbar" href="#">
-        <div class="container-fluid"><a class="navbar-brand" id="page_icon" href="inicial.html"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container-fluid"><a class="navbar-brand" id="page_icon" href="inicial.php"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav mr-auto" id="main_nav">
-                    <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="inicial.html">MyWebIoT</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active nav_item" href="canales.html">Canales</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="inicial.php">MyWebIoT</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active nav_item" href="canales.php">Canales</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" id="nav_link2" href="#">Ayuda</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link normal" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link normal" href="contacto.php">Contacto</a></li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto" id="right_nav">
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item"></a></li>
-                    <li class="nav-item" role="presentation" style="margin-right: 5px;"><a class="nav-link" href="login.html">Login</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="registro.html">Register</a></li>
+                    <li class="nav-item" role="presentation" style="margin-right: 5px;"><a class="nav-link" href="loginhtml.php">Login</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="registro.php">Register</a></li>
                 </ul>
             </div>
         </div>

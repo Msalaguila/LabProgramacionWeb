@@ -7,6 +7,8 @@
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             if (isset($_POST[$emailIDInput]) && isset($_POST[$passwordIDInput])) 
             {
+                session_start();
+
                 $email = $_POST[$emailIDInput];
                 $password = $_POST[$passwordIDInput];
 
@@ -34,18 +36,23 @@
                 if ($result) {
                     while($row = mysqli_fetch_array($result)) {
                             if ($row["passwd"==$password] && $row["email"==$email]) {
+
                                 // Credentials are ok
                                 $usernameEmail = $row["email"];
                                 $pass = $row["passwd"];
                                 echo "Hello: $usernameEmail"." $pass";
-                                header('Location: nuevoCanal.html');
+                                header('Location: paginaPrincipalUsuario.php');
+
+                                // Iniciar sesión, cogemos usuario
+                                $_SESSION["user"] = $row["email"];
+
                                 exit;
                             }
                     }
                 }
                     
                 $connection->close();
-                header('Location: login.html');
+                header('Location: loginhtml.php');
                 exit;
 
                 mysqli_free_result($result);
