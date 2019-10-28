@@ -30,7 +30,16 @@
                     <li class="nav-item" role="presentation"><a class="nav-link normal" href="contacto.php">Contacto</a></li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto" id="right_nav">
-                    <li class="nav-item" role="presentation"><a class="nav-link" id="nombreUsuario" href="#">Nombre Usuario</a></li>
+                    <?php 
+                    session_start();
+                    if (isset($_SESSION["user"])) {
+                        $nombre = $_SESSION["user"];
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='#'>$nombre</a></li>";
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='logout.php'>Logout Usuario</a></li>";
+                    } else {
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='#'>Nombre Usuario</a></li>";
+                    }
+                    ?>
                 </ul>
             </div>
         </div>

@@ -19,6 +19,14 @@
 </head>
 
 <body>
+    <?php 
+    session_start();
+    if (isset($_SESSION["user"])) {
+        header('Location: paginaPrincipalUsuario.php');
+        exit;
+    }
+    ?>
+
     <nav class="navbar navbar-light navbar-expand-md" id="navbar" href="#">
         <div class="container-fluid"><a class="navbar-brand" id="page_icon" href="inicial.php"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"

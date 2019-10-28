@@ -31,8 +31,17 @@
                 </ul>
                 <ul class="nav navbar-nav ml-auto" id="right_nav">
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item"></a></li>
-                    <li class="nav-item" role="presentation" style="margin-right: 5px;"><a class="nav-link" href="loginhtml.php">Login</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="registro.php">Register</a></li>
+                    <?php 
+                    session_start();
+                    if (isset($_SESSION["user"])) {
+                        $nombre = $_SESSION["user"];
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='#'>$nombre</a></li>";
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='logout.php'>Logout Usuario</a></li>";
+                    } else {
+                        echo "<li class='nav-item' role='presentation' style='margin-right: 5px;'><a class='nav-link' href='loginhtml.php'>Login</a></li>";
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='registro.php'>Register</a></li>";
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
@@ -46,7 +55,7 @@
                         <p>Muchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas
                             LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas
                             LetrasMuchas LetrasMuchas LetrasMuchas Letras</p>
-                        <a class="btn btn-primary" id="article1_button" role="button" href="registro.html">Empieza YA</a>
+                        <a class="btn btn-primary" id="article1_button" role="button" href="registro.php">Empieza YA</a>
                     </article>
                     <article id="first_colum">
                         <h1 class="text-left card_header">Últimos canales</h1>

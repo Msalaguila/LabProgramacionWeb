@@ -35,12 +35,22 @@
                 
                 // 4. Checking if the table is created
 
+                $sqlUser = "SELECT * FROM users WHERE email = '" . $_SESSION["webIotUser"] . "'"; 
+                /* 
+                $userID = 0;
+                if ($result = mysqli_query($connection, $sqlUser)) {
+                    if ($row = mysqli_fetch_assoc($result)) {
+                        $userID = $row["id"];
+                    }
+                }
+                */
+
                 $sql = "INSERT INTO canales (url, nombreCanal, descripcion, longitud, latitud, nombreSensor)
                 VALUES ('$url', '$name', '$descripcion', '$longitud', '$latitud', '$nombreSensor')";
 
                 if (mysqli_query($connection, $sql)) {
                     echo "New record created successfully";
-                    header('Location: registro.html');
+                    header('Location: nuevoCanal.php');
                     exit;
                 } else {
                     echo "Error: " . $sql . "<br>" . mysqli_error($connection);
