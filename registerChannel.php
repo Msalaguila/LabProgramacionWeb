@@ -15,7 +15,7 @@
                 $latitud = $_POST[$latitudIDInput];
                 $nombreSensor = $_POST[$nombreSensorIDInput];
                 $descripcion = $_POST[$descripcionIDInput];
-                $url = "asdasdaurl.com";
+                $url = rand();
 
                 function saveInformationToDatabase($url, $name, $descripcion, $longitud, $latitud, $nombreSensor) {
 
@@ -35,7 +35,7 @@
                 
                 // 4. Checking if the table is created
 
-                $sqlUser = "SELECT * FROM users WHERE email = '" . $_SESSION["webIotUser"] . "'"; 
+                // $sqlUser = "SELECT * FROM users WHERE email = '" . $_SESSION["webIotUser"] . "'"; 
                 /* 
                 $userID = 0;
                 if ($result = mysqli_query($connection, $sqlUser)) {
@@ -44,7 +44,7 @@
                     }
                 }
                 */
-
+                
                 $sql = "INSERT INTO canales (url, nombreCanal, descripcion, longitud, latitud, nombreSensor)
                 VALUES ('$url', '$name', '$descripcion', '$longitud', '$latitud', '$nombreSensor')";
 
