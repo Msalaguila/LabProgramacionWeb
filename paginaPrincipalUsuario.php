@@ -47,28 +47,8 @@
     <section id="section1">
         <div class="container">    
         <a class="btn btn-primary" id="principal_button" href="nuevoCanal.php">Nuevo Canal</a>
-            <h1 id="canales_heading">Listado de todos los Canales dados de alta</h1><button class="btn btn-danger float-right deleteButton" type="button"></button>
-            <article class="canales_article">
-                <p id="paragraph_canales">Información sobre el Canal A</p>
-                <p id="paragraph_canales">Autor:&nbsp;</p>
-                <p id="paragraph_canales">Descripción:</p>
-                <p id="paragraph_canales">Fecha:</p>
-                <p id="paragraph_canales">Enlace URL (habilitar enlace para acceder a la representación gráfica de los elementos almacenados)</p>
-            </article><button class="btn btn-danger float-right deleteButton" type="button"></button>
-            <article class="canales_article">
-                <p id="paragraph_canales">Información sobre el Canal A</p>
-                <p id="paragraph_canales">Autor:&nbsp;</p>
-                <p id="paragraph_canales">Descripción:</p>
-                <p id="paragraph_canales">Fecha:</p>
-                <p id="paragraph_canales">Enlace URL (habilitar enlace para acceder a la representación gráfica de los elementos almacenados)</p>
-            </article><button class="btn btn-danger float-right deleteButton" type="button"></button>
-            <article class="canales_article">
-                <p id="paragraph_canales">Información sobre el Canal A</p>
-                <p id="paragraph_canales">Autor:&nbsp;</p>
-                <p id="paragraph_canales">Descripción:</p>
-                <p id="paragraph_canales">Fecha:</p>
-                <p id="paragraph_canales">Enlace URL (habilitar enlace para acceder a la representación gráfica de los elementos almacenados)</p>
-            </article>
+        <h1 id="canales_heading">Listado de todos los Canales dados de alta</h1>
+            <?php include("../laboratorioweb/selectAllChannelsUserLogin.php")?>
         </div>
     </section>
     <script src="assets/js/jquery.min.js"></script>

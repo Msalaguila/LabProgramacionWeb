@@ -1,4 +1,5 @@
 <?php
+        session_start();
         $nameIDInput = "nombreCanal";
         $longitudIDInput = "longitud";
         $latitudIDInput = "latitud";
@@ -27,6 +28,8 @@
                     // 1 Stablishing connection to Database
                 $connection = mysqli_connect($host, $user, $databasePassword, $database);
 
+                $fechaCanal = date("Y-m-d H:i:s");
+
                 // 2. Managing errors
 
                 if (mysqli_connect_errno()) {
@@ -35,18 +38,16 @@
                 
                 // 4. Checking if the table is created
 
-                // $sqlUser = "SELECT * FROM users WHERE email = '" . $_SESSION["webIotUser"] . "'"; 
-                /* 
+                $sqlUser = "SELECT * FROM users WHERE email='" . $_SESSION["user"] . "'";
                 $userID = 0;
                 if ($result = mysqli_query($connection, $sqlUser)) {
                     if ($row = mysqli_fetch_assoc($result)) {
                         $userID = $row["id"];
                     }
                 }
-                */
                 
-                $sql = "INSERT INTO canales (url, nombreCanal, descripcion, longitud, latitud, nombreSensor)
-                VALUES ('$url', '$name', '$descripcion', '$longitud', '$latitud', '$nombreSensor')";
+                $sql = "INSERT INTO canales (url, id_user, nombreCanal, descripcion, longitud, latitud, nombreSensor, fechaRegistro)
+                VALUES ('$url', '$userID', '$name', '$descripcion', '$longitud', '$latitud', '$nombreSensor', '$fechaCanal')";
 
                 if (mysqli_query($connection, $sql)) {
                     echo "New record created successfully";
@@ -64,3 +65,4 @@
             }
 
         }
+?>

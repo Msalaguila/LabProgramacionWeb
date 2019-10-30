@@ -48,27 +48,7 @@
     <section class="d-lg-flex" id="section1">
         <div class="container">
             <h1 id="canales_heading">Listado de todos los Canales dados de alta</h1>
-            <article class="canales_article">
-                <p id="paragraph_canales">Información sobre el Canal A</p>
-                <p id="paragraph_canales">Autor:&nbsp;</p>
-                <p id="paragraph_canales">Descripción:</p>
-                <p id="paragraph_canales">Fecha:</p>
-                <p id="paragraph_canales">Enlace URL (habilitar enlace para acceder a la representación gráfica de los elementos almacenados)</p>
-            </article>
-            <article class="canales_article">
-                <p id="paragraph_canales">Información sobre el Canal A</p>
-                <p id="paragraph_canales">Autor:&nbsp;</p>
-                <p id="paragraph_canales">Descripción:</p>
-                <p id="paragraph_canales">Fecha:</p>
-                <p id="paragraph_canales">Enlace URL (habilitar enlace para acceder a la representación gráfica de los elementos almacenados)</p>
-            </article>
-            <article class="canales_article">
-                <p id="paragraph_canales">Información sobre el Canal A</p>
-                <p id="paragraph_canales">Autor:&nbsp;</p>
-                <p id="paragraph_canales">Descripción:</p>
-                <p id="paragraph_canales">Fecha:</p>
-                <p id="paragraph_canales">Enlace URL (habilitar enlace para acceder a la representación gráfica de los elementos almacenados)</p>
-            </article>
+            <?php include('../laboratorioweb/selectAllChannels.php'); ?>
         </div>
     </section>
     <script src="assets/js/jquery.min.js"></script>
