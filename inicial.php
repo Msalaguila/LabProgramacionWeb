@@ -66,8 +66,8 @@
                 <div class="col" id="second_column">
                     <article id="right_article">
                         <p>Información actualizada de los datos almacenados en la BBDD (al menos los siguientes):</p>
-                        <p>Número de usuarios:</p>
-                        <p>Canales:&nbsp;</p>
+                        <?php include("../laboratorioweb/getTotalNumberOfUsers.php")?>
+                        <?php include("../laboratorioweb/getTotalNumberOfChannels.php")?>
                         <p>Bytes/MB almacenados:</p>
                     </article>
                 </div>
