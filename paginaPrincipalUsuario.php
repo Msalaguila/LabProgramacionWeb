@@ -35,7 +35,7 @@
                     if (isset($_SESSION["user"])) {
                         $nombre = $_SESSION["user"];
                         echo "<li class='nav-item' role='presentation'><a class='nav-link' href='#'>$nombre</a></li>";
-                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='logout.php'>Logout Usuario</a></li>";
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='../laboratorioweb/scripts/logout.php'>Logout Usuario</a></li>";
                     } else {
                         echo "<li class='nav-item' role='presentation'><a class='nav-link' href='#'>Nombre Usuario</a></li>";
                     }
@@ -48,7 +48,7 @@
         <div class="container">    
         <a class="btn btn-primary" id="principal_button" href="nuevoCanal.php">Nuevo Canal</a>
         <h1 id="canales_heading">Listado de todos los Canales dados de alta</h1>
-            <?php include("../laboratorioweb/selectAllChannelsUserLogin.php")?>
+            <?php include("../laboratorioweb/scripts/selectAllChannelsUserLogin.php")?>
         </div>
     </section>
     <script src="assets/js/jquery.min.js"></script>

@@ -33,13 +33,13 @@
                 <ul class="nav navbar-nav ml-auto" id="right_nav">
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item"></a></li>
                     <li class="nav-item" role="presentation" style="margin-right: 5px;"><a class="nav-link active" href="#">Login</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="registro.php">Register</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="../laboratorioweb/registro.php">Register</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="login-clean">
-        <form method="POST" action="login.php">
+        <form method="POST" action="../laboratorioweb/scripts/login.php">
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><img id="form_image" src="assets/img/0ZEt7WEWx1CUeUKrd.png"></div>
             <div class="input-group" id="inputs_formulario">

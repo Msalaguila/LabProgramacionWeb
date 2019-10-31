@@ -48,7 +48,7 @@
     <section class="d-lg-flex" id="section1">
         <div class="container">
             <h1 id="canales_heading">Listado de todos los Canales dados de alta</h1>
-            <?php include('../laboratorioweb/selectAllChannels.php'); ?>
+            <?php include('../laboratorioweb/scripts/selectAllChannels.php'); ?>
         </div>
     </section>
     <script src="assets/js/jquery.min.js"></script>

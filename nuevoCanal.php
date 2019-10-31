@@ -37,7 +37,7 @@
                     if (isset($_SESSION["user"])) {
                         $nombre = $_SESSION["user"];
                         echo "<li class='nav-item' role='presentation'><a class='nav-link' href='#'>$nombre</a></li>";
-                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='logout.php'>Logout Usuario</a></li>";
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='../laboratorioweb/scripts/logout.php'>Logout Usuario</a></li>";
                     } else {
                         echo "<li class='nav-item' role='presentation'><a class='nav-link' href='#'>Nombre Usuario</a></li>";
                     }
@@ -47,7 +47,7 @@
         </div>
     </nav>
     <div class="login-clean">
-        <form method="POST" action="registerChannel.php">
+        <form method="POST" action="../laboratorioweb/scripts/registerChannel.php">
             <h1 id="nuevo_canal_heading">Nuevo Canal</h1>
             <div class="illustration"><img id="form_image" src="assets/img/0ZEt7WEWx1CUeUKrd.png"></div>
             <div class="input-group" id="inputs_formulario">

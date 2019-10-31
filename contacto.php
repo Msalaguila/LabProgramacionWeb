@@ -37,7 +37,7 @@
                     if (isset($_SESSION["user"])) {
                         $nombre = $_SESSION["user"];
                         echo "<li class='nav-item' role='presentation'><a class='nav-link' href='#'>$nombre</a></li>";
-                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='logout.php'>Logout Usuario</a></li>";
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='../laboratorioweb/scripts/logout.php'>Logout Usuario</a></li>";
                     } else {
                         echo "<li class='nav-item' role='presentation' style='margin-right: 5px;'><a class='nav-link' href='loginhtml.php'>Login</a></li>";
                         echo "<li class='nav-item' role='presentation'><a class='nav-link' href='registro.php'>Register</a></li>";

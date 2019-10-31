@@ -41,7 +41,7 @@
                                 $usernameEmail = $row["email"];
                                 $pass = $row["passwd"];
                                 echo "Hello: $usernameEmail"." $pass";
-                                header('Location: paginaPrincipalUsuario.php');
+                                header('Location: ../paginaPrincipalUsuario.php');
 
                                 // Iniciar sesión, cogemos usuario
                                 $_SESSION["user"] = $row["email"];
