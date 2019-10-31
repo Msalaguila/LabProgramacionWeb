@@ -1,67 +1,66 @@
 <?php
-        
-        $emailIDInput = "email";
-        $passwordIDInput = "passwd";
-        $variable = "";
 
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST[$emailIDInput]) && isset($_POST[$passwordIDInput])) 
-            {
-                session_start();
+$emailIDInput = "email";
+$passwordIDInput = "passwd";
+$variable = "";
 
-                $email = $_POST[$emailIDInput];
-                $password = $_POST[$passwordIDInput];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST[$emailIDInput]) && isset($_POST[$passwordIDInput])) {
+        session_start();
 
-                function getInformationFromDatabase($email, $password) {
+        $email = $_POST[$emailIDInput];
+        $password = $_POST[$passwordIDInput];
 
-                $host = "localhost";
-                $database = "laboratorioweb";
-                $user = "root";
-                $databasePassword = "";
+        function getInformationFromDatabase($email, $password)
+        {
 
-                    // 1 Stablishing connection to Database
-                $connection = mysqli_connect($host, $user, $databasePassword, $database);
+            $host = "localhost";
+            $database = "laboratorioweb";
+            $user = "root";
+            $databasePassword = "";
 
-                // 2. Managing errors
+            // 1 Stablishing connection to Database
+            $connection = mysqli_connect($host, $user, $databasePassword, $database);
 
-                if (mysqli_connect_errno()) {
-                    die(mysqli_connect_error());
-                }
-                
-                // 4. Checking if the table is created
+            // 2. Managing errors
 
-                $sql = "SELECT email, passwd FROM users WHERE email='$email' AND passwd='$password'";
+            if (mysqli_connect_errno()) {
+                die(mysqli_connect_error());
+            }
 
-                $result = mysqli_query($connection, $sql);
-                if ($result) {
-                    while($row = mysqli_fetch_array($result)) {
-                            if ($row["passwd"==$password] && $row["email"==$email]) {
+            // 4. Checking if the table is created
 
-                                // Credentials are ok
-                                $usernameEmail = $row["email"];
-                                $pass = $row["passwd"];
-                                echo "Hello: $usernameEmail"." $pass";
-                                header('Location: ../paginaPrincipalUsuario.php');
+            $sql = "SELECT email, passwd FROM users WHERE email='$email' AND passwd='$password'";
 
-                                // Iniciar sesión, cogemos usuario
-                                $_SESSION["user"] = $row["email"];
+            $result = mysqli_query($connection, $sql);
+            if ($result) {
+                while ($row = mysqli_fetch_array($result)) {
+                    if ($row["passwd" == $password] && $row["email" == $email]) {
 
-                                exit;
-                            }
+                        // Credentials are ok
+                        $usernameEmail = $row["email"];
+                        $pass = $row["passwd"];
+                        echo "Hello: $usernameEmail" . " $pass";
+                        header('Location: ../paginaPrincipalUsuario.php');
+
+                        // Iniciar sesión, cogemos usuario
+                        $_SESSION["user"] = $row["email"];
+
+                        exit;
                     }
                 }
-                    
-                $connection->close();
-                header('Location: loginhtml.php');
-                exit;
-
-                mysqli_free_result($result);
-
-                mysqli_close($connection);
-                }
-                
-                //saveInformationToDatabase($name, $email, $passwordToSaveDatabase, $fecha);
-                getInformationFromDatabase($email, $password);
             }
+
+            $connection->close();
+            header('Location: ../loginhtml.php');
+            exit;
+
+            mysqli_free_result($result);
+
+            mysqli_close($connection);
         }
-    ?>
+
+        //saveInformationToDatabase($name, $email, $passwordToSaveDatabase, $fecha);
+        getInformationFromDatabase($email, $password);
+    }
+}

@@ -24,6 +24,7 @@ $descripcionCanal = "";
 $fechaCanal = "";
 $urlCanal = "";
 $idUser = 0;
+$idChannel = 0;
 
 if ($result = mysqli_query($connection, $sqlUser)) {
     while ($row = mysqli_fetch_array($result)) {
@@ -32,6 +33,7 @@ if ($result = mysqli_query($connection, $sqlUser)) {
         $fechaCanal = $row["fechaRegistro"];
         $urlCanal = $row["url"];
         $idUser = $row["id_user"];
+        $idChannel = $row["id"];
 
         $sqlUser = "SELECT * FROM users WHERE id='$idUser'";
         $userName = 0;
@@ -41,8 +43,10 @@ if ($result = mysqli_query($connection, $sqlUser)) {
             }
         }
 
-        echo "<button class='btn btn-danger float-right deleteButton' type='button'></button>";
+        echo"<a href=\"./scripts/deleteChannel.php?id=".$idChannel."\" class='btn btn-danger float-right deleteButton'></a>";
+        //echo "<button class='btn btn-danger float-right deleteButton' type='button'></button>";
         echo "<article class='canales_article'>";
+        echo "ID CANAL: $idChannel";
         echo "<p id='paragraph_canales'>Información sobre el Canal: $nombreCanal</p>";
         echo "<p id='paragraph_canales'>Autor: $userName&nbsp;</p>";
         echo "<p id='paragraph_canales'>Descripción: $descripcionCanal</p>";
