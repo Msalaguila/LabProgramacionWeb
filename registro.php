@@ -46,7 +46,7 @@
         </div>
     </nav>
     <div class="login-clean">
-        <form method="POST" action="r../laboratorioweb/scripts/egister.php">
+        <form method="POST" action="../laboratorioweb/scripts/register.php">
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><img id="form_image" src="assets/img/0ZEt7WEWx1CUeUKrd.png"></div>
             <div class="input-group" id="inputs_formulario">

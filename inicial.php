@@ -21,8 +21,7 @@
 <body>
     <nav class="navbar navbar-light navbar-expand-md" id="navbar" href="#">
         <div class="container-fluid"><a class="navbar-brand" id="page_icon" href="inicial.php"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
+            <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav mr-auto" id="main_nav">
                     <li class="nav-item" role="presentation"><a class="nav-link active nav_item" href="inicial.php">MyWebIoT</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="canales.php">Canales</a></li>
@@ -31,7 +30,7 @@
                 </ul>
                 <ul class="nav navbar-nav ml-auto" id="right_nav">
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item"></a></li>
-                    <?php 
+                    <?php
                     session_start();
                     if (isset($_SESSION["user"])) {
                         $nombre = $_SESSION["user"];
@@ -59,16 +58,16 @@
                     </article>
                     <article id="first_colum">
                         <h1 class="text-left card_header">Últimos canales</h1>
-                        <figure class="figure figure"><img class="img-fluid figure-img" style="background-image: url(&quot;assets/img/0ZEt7WEWx1CUeUKrd.png&quot;);background-position: center;background-size: cover;background-repeat: no-repeat;" src="assets/img/0ZEt7WEWx1CUeUKrd.png"></figure>
-                        <figure class="figure figure"><img class="img-fluid figure-img" style="background-image: url(&quot;assets/img/0ZEt7WEWx1CUeUKrd.png&quot;);background-position: center;background-size: cover;background-repeat: no-repeat;" src="assets/img/0ZEt7WEWx1CUeUKrd.png"></figure>
+                        <figure class="figure figure" id="curve_chart"><img style="width: 800px; height: 300px" src="assets/img/0ZEt7WEWx1CUeUKrd.png"></figure>
+                        <figure class="figure figure" id="curve_chart2"><img style="width: 800px; height: 300px" src="assets/img/0ZEt7WEWx1CUeUKrd.png"></figure>
                     </article>
                 </div>
                 <div class="col" id="second_column">
                     <article id="right_article">
                         <p>Información actualizada de los datos almacenados en la BBDD (al menos los siguientes):</p>
-                        <?php include("../laboratorioweb/scripts/getTotalNumberOfUsers.php")?>
-                        <?php include("../laboratorioweb/scripts/getTotalNumberOfChannels.php")?>
-                        <?php include("../laboratorioweb/scripts/getDatabaseSize.php")?>
+                        <?php include("../laboratorioweb/scripts/getTotalNumberOfUsers.php") ?>
+                        <?php include("../laboratorioweb/scripts/getTotalNumberOfChannels.php") ?>
+                        <?php include("../laboratorioweb/scripts/getDatabaseSize.php") ?>
                     </article>
                 </div>
             </div>
@@ -79,6 +78,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/lightpick.min.js"></script>
     <script src="assets/js/datepicker.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Fecha'],
+                <?php include("../laboratorioweb/scripts/getInformationForChart.php") ?>
+            ]);
+
+            var options = {
+                title: 'Info del Canal',
+                curveType: 'function',
+                legend: {
+                    position: 'bottom'
+                }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+            var chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+
+            chart.draw(data, options);
+            chart2.draw(data, options);
+        }
+    </script>
 </body>
 
 </html>
