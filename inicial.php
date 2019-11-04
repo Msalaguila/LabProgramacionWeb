@@ -16,6 +16,52 @@
     <link rel="stylesheet" href="assets/css/Navigation-Clean-2.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/lightpick.min.js"></script>
+    <script src="assets/js/datepicker.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Fecha'],
+                <?php include("../laboratorioweb/scripts/getInformationForChart.php") ?>
+            ]);
+
+            var options = {
+                title: 'Info del Canal',
+                curveType: 'function',
+                legend: {
+                    position: 'bottom'
+                }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+            var chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+
+            chart.draw(data, options);
+            chart2.draw(data, options);
+        }
+    </script>
+    <script>
+        function get_channels() {
+            $("#numerocanales").load("../laboratorioweb/scripts/getTotalNumberOfChannels.php");
+            setTimeout(get_channels, 100);
+        };
+
+        function get_users() {
+            $("#numerousuarios").load("../laboratorioweb/scripts/getTotalNumberOfUsersAjax.php");
+            setTimeout(get_users, 100);
+        };
+    </script>
 </head>
 
 <body>
@@ -65,48 +111,21 @@
                 <div class="col" id="second_column">
                     <article id="right_article">
                         <p>Información actualizada de los datos almacenados en la BBDD (al menos los siguientes):</p>
-                        <?php include("../laboratorioweb/scripts/getTotalNumberOfUsers.php") ?>
-                        <?php include("../laboratorioweb/scripts/getTotalNumberOfChannels.php") ?>
+                        <p id="numerousuarios">Número de usuarios: </p>
+                        <p id="numerocanales">Canales: </p>
                         <?php include("../laboratorioweb/scripts/getDatabaseSize.php") ?>
                     </article>
                 </div>
             </div>
         </div>
     </section>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/lightpick.min.js"></script>
-    <script src="assets/js/datepicker.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Year', 'Fecha'],
-                <?php include("../laboratorioweb/scripts/getInformationForChart.php") ?>
-            ]);
-
-            var options = {
-                title: 'Info del Canal',
-                curveType: 'function',
-                legend: {
-                    position: 'bottom'
-                }
-            };
-
-            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-            var chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
-
-            chart.draw(data, options);
-            chart2.draw(data, options);
-        }
+    <script>
+        setTimeout(get_users, 100);
     </script>
+    <script>
+        setTimeout(get_channels, 100);
+    </script>
+
 </body>
 
 </html>

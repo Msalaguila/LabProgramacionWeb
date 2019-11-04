@@ -30,6 +30,6 @@ if ($result = mysqli_query($connection, $sqlUser)) {
     $numero_usuarios = mysqli_num_rows($result);
 }
 
-echo "Numero de registros de usuarios: $numero_usuarios";
+echo "Numero de usuarios: $numero_usuarios";
 
 mysqli_close($connection);
