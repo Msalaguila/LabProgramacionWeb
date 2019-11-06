@@ -1,10 +1,4 @@
 <?php
-$nameIDInput = "nombreCanal";
-$longitudIDInput = "longitud";
-$latitudIDInput = "latitud";
-$nombreSensorIDInput = "nombreSensor";
-$descripcionIDInput = "descripcion";
-
 
 $host = "localhost";
 $database = "laboratorioweb";

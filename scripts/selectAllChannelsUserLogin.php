@@ -47,9 +47,9 @@ if ($result = mysqli_query($connection, $sqlUser)) {
         //echo "<button class='btn btn-danger float-right deleteButton' type='button'></button>";
         echo "<article class='canales_article'>";
         echo "<p id='paragraph_canales'>Información sobre el Canal: $nombreCanal</p>";
-        echo "<p id='paragraph_canales'>Autor: $userName&nbsp;</p>";
+        echo "<p id='paragraph_canales'>Autor: $userName;</p>";
         echo "<p id='paragraph_canales'>Descripción: $descripcionCanal</p>";
-        echo "<p id='paragraph_canales'>Fecha: $fechaCanal</p>";
+        echo "<p id='paragraph_canales'>Fecha de creación: $fechaCanal</p>";
         echo "<p id='paragraph_canales'>Enlace URL: $urlCanal</p>";
         echo "</article>";
     }

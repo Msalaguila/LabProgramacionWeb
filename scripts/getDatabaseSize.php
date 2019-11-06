@@ -27,9 +27,9 @@ if ($result = mysqli_query($connection, $sql)) {
         $dbSize += $row["Data_length"] + $row["Index_length"];
     }
 
-    // from bytes to megabytes
+    // from bytes to kilobytes
     $dbSizeK = $dbSize / 1024;
 }
-echo "<p>Bytes/MB almacenados: $dbSizeK MB</p>";
+echo "<p>Bytes/MB almacenados: $dbSizeK KB</p>";
 
 mysqli_close($connection);
