@@ -24,44 +24,8 @@
     <script src="assets/js/datepicker.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Year', 'Fecha'],
-                <?php include("../laboratorioweb/scripts/getInformationForChart.php") ?>
-            ]);
-
-            var options = {
-                title: 'Info del Canal',
-                curveType: 'function',
-                legend: {
-                    position: 'bottom'
-                }
-            };
-
-            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-            var chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
-
-            chart.draw(data, options);
-            chart2.draw(data, options);
-        }
-    </script>
-    <script>
-        function get_channels() {
-            $("#numerocanales").load("../laboratorioweb/scripts/getTotalNumberOfChannels.php");
-            setTimeout(get_channels, 100);
-        };
-
-        function get_users() {
-            $("#numerousuarios").load("../laboratorioweb/scripts/getTotalNumberOfUsersAjax.php");
-            setTimeout(get_users, 100);
-        };
-    </script>
+    <?php session_start();?>
+    <?php include("../laboratorioweb/scripts/getInformationForChart.php")?>
 </head>
 
 <body>
@@ -77,7 +41,6 @@
                 <ul class="nav navbar-nav ml-auto" id="right_nav">
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item"></a></li>
                     <?php
-                    session_start();
                     if (isset($_SESSION["user"])) {
                         $nombre = $_SESSION["user"];
                         echo "<li class='nav-item' role='presentation'><a class='nav-link' href='#'>$nombre</a></li>";
@@ -97,15 +60,13 @@
                 <div class="col-10 col-sm-9 col-md-9 col-lg-10 col-xl-10 text-center" id="left_column">
                     <article id="first_colum">
                         <h1 class="text-left card_header">MyWebIoT</h1>
-                        <p>Muchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas
-                            LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas LetrasMuchas
-                            LetrasMuchas LetrasMuchas LetrasMuchas Letras</p>
+                        <h3>BIENVENIDO A MI WEB DE IOT</h3>
                         <a class="btn btn-primary" id="article1_button" role="button" href="registro.php">Empieza YA</a>
                     </article>
                     <article id="first_colum">
                         <h1 class="text-left card_header">Últimos canales</h1>
-                        <figure class="figure figure" id="curve_chart"><img style="width: 800px; height: 300px" src="assets/img/0ZEt7WEWx1CUeUKrd.png"></figure>
-                        <figure class="figure figure" id="curve_chart2"><img style="width: 800px; height: 300px" src="assets/img/0ZEt7WEWx1CUeUKrd.png"></figure>
+                        <figure class="figure figure" id="chartContainer1" style="width: 800px; height: 400px"></figure>
+                        <figure class="figure figure" id="chartContainer2" style="width: 800px; height: 400px"></figure>                    
                     </article>
                 </div>
                 <div class="col" id="second_column">
@@ -113,17 +74,40 @@
                         <p>Información actualizada de los datos almacenados en la BBDD (al menos los siguientes):</p>
                         <p id="numerousuarios">Número de usuarios: </p>
                         <p id="numerocanales">Canales: </p>
-                        <?php include("../laboratorioweb/scripts/getDatabaseSize.php") ?>
+                        <p id="databasesize">Bytes/MB almacenados:  </p>
                     </article>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- UPDATE CHANNELS AND USERS INFO WITH AJAX-->
+
+    <script>
+        function get_channels() {
+            $("#numerocanales").load("../laboratorioweb/scripts/getTotalNumberOfChannels.php");
+            setTimeout(get_channels, 100);
+        };
+
+        function get_users() {
+            $("#numerousuarios").load("../laboratorioweb/scripts/getTotalNumberOfUsersAjax.php");
+            setTimeout(get_users, 100);
+        };
+
+        function get_databaseSize() {
+            $("#databasesize").load("../laboratorioweb/scripts/getDatabaseSize.php");
+            setTimeout(get_databaseSize, 100);
+        };
+    </script>
+
     <script>
         setTimeout(get_users, 100);
     </script>
     <script>
         setTimeout(get_channels, 100);
+    </script>
+    <script>
+        setTimeout(get_databaseSize, 100);
     </script>
 
 </body>

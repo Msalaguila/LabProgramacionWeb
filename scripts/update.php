@@ -41,11 +41,11 @@ function saveInformationToDatabase($url, $dato) {
     mysqli_close($connection);
     }
 
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST["url"]) && isset($_POST["dato"])) 
+    if($_SERVER["REQUEST_METHOD"] == "GET") {
+        if (isset($_GET["url"]) && isset($_GET["dato"])) 
         {
-            $urlToStore = $_POST["url"];
-            $datoToStore = $_POST["dato"];
+            $urlToStore = $_GET["url"];
+            $datoToStore = $_GET["dato"];
             saveInformationToDatabase($urlToStore, $datoToStore);
         }
     }
