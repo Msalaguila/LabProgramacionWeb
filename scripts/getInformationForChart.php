@@ -24,6 +24,7 @@ if ($conn->connect_error) {
             $index += 1;
             $id = $row['id'];
             $nombreCanal = $row['nombreCanal'];
+            $url = $row['url'];
 
             // getting channels data
             $sql2 = 'SELECT * FROM datossensores WHERE id_canal="' . $id . '"'; // 
@@ -41,6 +42,11 @@ if ($conn->connect_error) {
                             title:{
                                 text: "Canal: ' . $nombreCanal . '"
                             },
+                            subtitles:[{
+                                text: "URL:  '.$url.'",
+                                fontColor: "blue"
+                            }]
+                            ,
                             axisY: {
                                 title: "Dato",
                             },
@@ -52,12 +58,17 @@ if ($conn->connect_error) {
                                 xValueType: "dateTime",
                                 dataPoints: ';
                 echo json_encode($dataPoints, JSON_NUMERIC_CHECK);
-                echo '}]
+
+                if (!empty($dataPoints)) {
+                    echo '}]
                         });
 
                         chart' . strval($index) . '.render();';
-
-                unset($dataPoints);
+                        unset($dataPoints);
+                } else {
+                    echo '}]
+                        })';
+                }
             } else {
                 echo "Error selecting channels's data: " . mysqli_error($conn);
             }
