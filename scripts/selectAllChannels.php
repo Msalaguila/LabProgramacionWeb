@@ -36,6 +36,7 @@ function getInformationFromDatabase()
             $fechaCanal = $row["fechaRegistro"];
             $urlCanal = $row["url"];
             $idUser = $row["id_user"];
+            $idChannel = $row["id"];
 
 
             $sqlUser = "SELECT * FROM users WHERE id='$idUser'";
@@ -51,7 +52,7 @@ function getInformationFromDatabase()
             echo "<p id='paragraph_canales'>Autor: $userName&nbsp;</p>";
             echo "<p id='paragraph_canales'>Descripción: $descripcionCanal</p>";
             echo "<p id='paragraph_canales'>Fecha: $fechaCanal</p>";
-            echo "<p id='paragraph_canales'>Enlace URL: $urlCanal</p>";
+            echo "<p id='paragraph_canales'> Enlace URL:<a href=\"./showChannelDescription.php?id=".$idChannel."\" id='paragraph_canales'>  $urlCanal </a> </p>";
             echo "</article>";
         }
     }

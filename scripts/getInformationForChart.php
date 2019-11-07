@@ -43,7 +43,7 @@ if ($conn->connect_error) {
                                 text: "Canal: ' . $nombreCanal . '"
                             },
                             subtitles:[{
-                                text: "URL:  '.$url.'",
+                                text: "URL:  ' . $url . '",
                                 fontColor: "blue"
                             }]
                             ,
@@ -58,17 +58,12 @@ if ($conn->connect_error) {
                                 xValueType: "dateTime",
                                 dataPoints: ';
                 echo json_encode($dataPoints, JSON_NUMERIC_CHECK);
+                echo '}]
+            });
 
-                if (!empty($dataPoints)) {
-                    echo '}]
-                        });
-
-                        chart' . strval($index) . '.render();';
-                        unset($dataPoints);
-                } else {
-                    echo '}]
-                        })';
-                }
+            chart' . strval($index) . '.render();';
+                unset($dataPoints);
+                
             } else {
                 echo "Error selecting channels's data: " . mysqli_error($conn);
             }

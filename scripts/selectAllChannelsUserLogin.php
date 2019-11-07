@@ -50,7 +50,7 @@ if ($result = mysqli_query($connection, $sqlUser)) {
         echo "<p id='paragraph_canales'>Autor: $userName;</p>";
         echo "<p id='paragraph_canales'>Descripción: $descripcionCanal</p>";
         echo "<p id='paragraph_canales'>Fecha de creación: $fechaCanal</p>";
-        echo "<p id='paragraph_canales'>Enlace URL: $urlCanal</p>";
+        echo "<p id='paragraph_canales'> Enlace URL:<a href=\"./showChannelDescription.php?id=".$idChannel."\" id='paragraph_canales'>  $urlCanal </a> </p>";
         echo "</article>";
     }
 }

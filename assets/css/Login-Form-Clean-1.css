@@ -103,3 +103,9 @@
 #contacto_heading {
 }
 
+#articleShowChannelDescription {
+  border: 1px solid rgb(35,150,243);
+  margin: 10px;
+  border-radius: 5px;
+  padding: 0;
+}
