@@ -24,8 +24,8 @@
     <script src="assets/js/datepicker.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <?php session_start();?>
-    <?php include("../laboratorioweb/scripts/getInformationForChart.php")?>
+    <?php session_start(); ?>
+    <?php include("../laboratorioweb/scripts/getInformationForChart.php") ?>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
                     <li class="nav-item" role="presentation"><a class="nav-link active nav_item" href="inicial.php">MyWebIoT</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="canales.php">Canales</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Ayuda</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link normal" href="contacto.php">Contacto</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link normal" href="contacto.php">Contacto</a></li>                    
                 </ul>
                 <ul class="nav navbar-nav ml-auto" id="right_nav">
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item"></a></li>
@@ -54,6 +54,7 @@
             </div>
         </div>
     </nav>
+
     <section class="main_section">
         <div class="container-fluid main_container">
             <div class="row first_row">
@@ -66,15 +67,17 @@
                     <article id="first_colum">
                         <h1 class="text-left card_header">Últimos canales</h1>
                         <figure class="figure figure" id="chartContainer1" style="width: 800px; height: 400px"></figure>
-                        <figure class="figure figure" id="chartContainer2" style="width: 800px; height: 400px"></figure>                    
+                        <figure class="figure figure" id="chartContainer2" style="width: 800px; height: 400px"></figure>
                     </article>
                 </div>
+
                 <div class="col" id="second_column">
                     <article id="right_article">
                         <p>Información actualizada de los datos almacenados en la BBDD (al menos los siguientes):</p>
                         <p id="numerousuarios">Número de usuarios: </p>
                         <p id="numerocanales">Canales: </p>
-                        <p id="databasesize">Bytes/MB almacenados:  </p>
+                        <p id="databasesize">Bytes/MB almacenados: </p>
+                        <p id="numerosugerencias">Numero de sugerencias totales: </p>
                     </article>
                 </div>
             </div>
@@ -98,6 +101,13 @@
             $("#databasesize").load("../laboratorioweb/scripts/getDatabaseSize.php");
             setTimeout(get_databaseSize, 100);
         };
+
+        // CONSEGUIMOS EL NUMERO TOTAL DE SUGERENCIAS CADA 10S
+
+        function get_sugerencias() {
+            $("#numerosugerencias").load("../laboratorioweb/scripts/getTotalNumberOfSugerencias.php");
+            setTimeout(get_sugerencias, 10000);
+        };
     </script>
 
     <script>
@@ -108,6 +118,9 @@
     </script>
     <script>
         setTimeout(get_databaseSize, 100);
+    </script>
+    <script>
+        setTimeout(get_sugerencias, 100);
     </script>
 
 </body>

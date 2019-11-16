@@ -47,7 +47,7 @@
     <section id="section1">
         <div class="container">    
         <a class="btn btn-primary" id="principal_button" href="nuevoCanal.php">Nuevo Canal</a>
-        <h1 id="canales_heading">Listado de todos los Canales dados de alta</h1>
+        <h1 id="canales_heading">Listado de todos los Canales dados de alta</h1> 
             <?php include("../laboratorioweb/scripts/selectAllChannelsUserLogin.php")?>
         </div>
     </section>

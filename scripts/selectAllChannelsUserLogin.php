@@ -16,8 +16,9 @@ if (mysqli_connect_errno()) {
 }
 
 // 4. Checking if the table is created
+$currentUserID = $_SESSION["userID"];
 
-$sqlUser = "SELECT * FROM canales";
+$sqlUser = "SELECT * FROM canales where id_user='$currentUserID'";
 
 $nombreCanal = "";
 $descripcionCanal = "";
@@ -35,7 +36,7 @@ if ($result = mysqli_query($connection, $sqlUser)) {
         $idUser = $row["id_user"];
         $idChannel = $row["id"];
 
-        $sqlUser = "SELECT * FROM users WHERE id='$idUser'";
+        $sqlUser = "SELECT * FROM users WHERE id='$currentUserID'";
         $userName = 0;
         if ($result2 = mysqli_query($connection, $sqlUser)) {
             if ($row2 = mysqli_fetch_assoc($result2)) {
@@ -44,7 +45,6 @@ if ($result = mysqli_query($connection, $sqlUser)) {
         }
 
         echo"<a href=\"./scripts/deleteChannel.php?id=".$idChannel."\" class='btn btn-danger float-right deleteButton'></a>";
-        //echo "<button class='btn btn-danger float-right deleteButton' type='button'></button>";
         echo "<article class='canales_article'>";
         echo "<p id='paragraph_canales'>Información sobre el Canal: $nombreCanal</p>";
         echo "<p id='paragraph_canales'>Autor: $userName;</p>";

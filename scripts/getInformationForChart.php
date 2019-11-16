@@ -14,7 +14,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
     // getting channels from 'canales' table
-    $sql = "SELECT * FROM canales ORDER BY fechaRegistro DESC LIMIT 2"; // ORDER BY fecha DESC LIMIT 1
+    $sql = "SELECT * FROM canales ORDER BY fechaRegistro DESC LIMIT 2"; // ORDER BY fecha DESC LIMIT 2
 
     // checking if operation succeeded or not
     if ($result = mysqli_query($conn, $sql)) {

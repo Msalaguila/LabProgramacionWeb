@@ -1,0 +1,11 @@
+.columnaizquierda {
+    max-width: 4%;
+    margin-right: 30px;
+    margin-left: 5px;
+    border: solid;
+    text-align: center;
+    border-width: 1px;
+    border-color: blue;
+    border-radius: 5px;
+    background-color: antiquewhite;
+}

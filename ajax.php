@@ -25,7 +25,6 @@
         <h2>Numero de registros de usuarios</h2>
     </div>
 
-
     <!-- When the webpage is loaded it is called only 1 TIME AFTER 2 SEC-->
     <script>
         setTimeout(get_time, 2000);

@@ -30,13 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // 4. Checking if the table is created
 
-            $sql = "SELECT email, passwd FROM users WHERE email='$email' AND passwd='$password'";
+            $sql = "SELECT id, email, passwd FROM users WHERE email='$email' AND passwd='$password'";
 
             $result = mysqli_query($connection, $sql);
             if ($result) {
                 while ($row = mysqli_fetch_array($result)) {
                     if ($row["passwd" == $password] && $row["email" == $email]) {
-
                         // Credentials are ok
                         $usernameEmail = $row["email"];
                         $pass = $row["passwd"];
@@ -45,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         // Iniciar sesión, cogemos usuario
                         $_SESSION["user"] = $row["email"];
+                        $_SESSION["userID"] = $row["id"];
 
                         exit;
                     }
