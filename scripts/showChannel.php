@@ -39,32 +39,34 @@ if (isset($_GET["id"])) {
                     $dataPoints[] = array("x" => $fecha->getTimestamp() * 1000, "y" => intval($dato));
                 }
 
-                echo 'var chart' . strval($index) . ' = new CanvasJS.Chart("chartContainer' . strval($index) . '", {
-                    animationEnabled: true,
-                    title:{
-                        text: "Canal: ' . $nombreCanal . '"
-                    },
-                    subtitles:[{
-                        text: "URL:  ' . $urlCanal . '",
-                        fontColor: "blue"
-                    }]
-                    ,
-                    axisY: {
-                        title: "Dato",
-                    },
-                    data: [{
-                        type: "spline",
-                        markerSize: 5,
-                        xValueFormatString: "H:mm:s",
-                        yValueFormatString: "#,##0.##",
-                        xValueType: "dateTime",
-                        dataPoints: ';
-                        echo json_encode($dataPoints, JSON_NUMERIC_CHECK);
-                echo '}]
-            });
-
-            chart' . strval($index) . '.render();';
-                unset($dataPoints);
+                if (!empty($dataPoints)) {
+                    echo 'var chart' . strval($index) . ' = new CanvasJS.Chart("chartContainer' . strval($index) . '", {
+                        animationEnabled: true,
+                        title:{
+                            text: "Canal: ' . $nombreCanal . '"
+                        },
+                        subtitles:[{
+                            text: "URL:  ' . $urlCanal . '",
+                            fontColor: "blue"
+                        }]
+                        ,
+                        axisY: {
+                            title: "Dato",
+                        },
+                        data: [{
+                            type: "spline",
+                            markerSize: 5,
+                            xValueFormatString: "H:mm:s",
+                            yValueFormatString: "#,##0.##",
+                            xValueType: "dateTime",
+                            dataPoints: ';
+                    echo json_encode($dataPoints, JSON_NUMERIC_CHECK);
+                    echo '}]
+                });
+    
+                chart' . strval($index) . '.render();';
+                    unset($dataPoints);
+                }
             }
         }
         echo '}</script>';

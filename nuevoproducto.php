@@ -19,35 +19,27 @@
 </head>
 
 <body>
-    <?php session_start(); ?>
+    <?php session_start();?>
     <nav class="navbar navbar-light navbar-expand-md" id="navbar" href="#">
         <div class="container-fluid"><a class="navbar-brand" id="page_icon" href="inicial.php"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-1">
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
                 <ul class="nav navbar-nav mr-auto" id="main_nav">
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="inicial.php">MyWebIoT</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="canales.php">Canales</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Ayuda</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active normal" href="contacto.php">Contacto</a></li>
-                    <?php
-                    if (isset($_SESSION["user"])) {
-                        $nombre = $_SESSION["user"];
-                        if ($nombre == "admin@gmail.com") {
-                            echo "<li class='nav-item' role='presentation'><a class='nav-link' href='nuevoproducto.php'>Crear Producto</a></li>";
-                        }
-                    }
-                    ?>
+                    <li class="nav-item" role="presentation"><a class="nav-link normal" href="contacto.php">Contacto</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Crear Producto</a></li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto" id="right_nav">
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item"></a></li>
-
                     <?php
                     if (isset($_SESSION["user"])) {
                         $nombre = $_SESSION["user"];
                         echo "<li class='nav-item' role='presentation'><a class='nav-link' href='#'>$nombre</a></li>";
                         echo "<li class='nav-item' role='presentation'><a class='nav-link' href='../laboratorioweb/scripts/logout.php'>Logout Usuario</a></li>";
                     } else {
-                        echo "<li class='nav-item' role='presentation' style='margin-right: 5px;'><a class='nav-link' href='loginhtml.php'>Login</a></li>";
-                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='registro.php'>Register</a></li>";
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='#'>Nombre Usuario</a></li>";
                     }
                     ?>
                 </ul>
@@ -55,13 +47,19 @@
         </div>
     </nav>
     <div class="login-clean">
-        <form method="post">
-            <h1 class="text-center" id="contacto_heading">Contacto</h1>
+    <form method="POST" action="../laboratorioweb/scripts/crearproducto.php">
+            <h1 id="nuevo_canal_heading">Nuevo Producto</h1>
             <div class="illustration"><img id="form_image" src="assets/img/0ZEt7WEWx1CUeUKrd.png"></div>
-            <div class="form-group"><textarea class="form-control" id="nombre" placeholder="Nombre"></textarea></div>
-            <div class="form-group"><textarea class="form-control" id="correo" placeholder="Correo" inputmode="email"></textarea></div>
-            <div class="form-group"><textarea class="form-control" id="mensaje" placeholder="Mensaje"></textarea></div>
-            <div class="form-group"><button class="btn btn-primary btn-block" id="send_button_contacto" type="submit">Enviar</button></div>
+            <div class="input-group" id="inputs_formulario">
+                <div class="input-group-prepend"><span class="input-group-text">Nombre Producto</span></div><input class="form-control" type="text" id="nombreProducto" name="nombreProducto" required>
+                <div class="input-group-append"></div>
+            </div>
+            <div class="input-group" id="inputs_formulario">
+                <div class="input-group-prepend"><span class="input-group-text">Precio Producto</span></div><input class="form-control" type="number" id="precioProducto" name="precioProducto" inputmode="numeric" step= ".01"required>
+                <div class="input-group-append"></div>
+            </div>
+            <div class="form-group" id="descripcion"><textarea class="form-control" id="descripcion" placeholder="Descripcion" name="descripcion" required></textarea></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" id="nuevo_canal_button" type="submit">Registrar Nuevo Producto</button></div>
         </form>
     </div>
     <script src="assets/js/jquery.min.js"></script>

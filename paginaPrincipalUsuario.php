@@ -19,19 +19,26 @@
 </head>
 
 <body>
+    <?php session_start(); ?>
     <nav class="navbar navbar-light navbar-expand-md" id="navbar" href="#">
         <div class="container-fluid"><a class="navbar-brand" id="page_icon" href="inicial.php"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
+            <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav mr-auto" id="main_nav">
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="inicial.php">MyWebIoT</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item active normal" href="canales.php">Canales</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Ayuda</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link normal" href="contacto.php">Contacto</a></li>
+                    <?php
+                    if (isset($_SESSION["user"])) {
+                        $nombre = $_SESSION["user"];
+                        if ($nombre == "admin@gmail.com") {
+                            echo "<li class='nav-item' role='presentation'><a class='nav-link' href='nuevoproducto.php'>Crear Producto</a></li>";
+                        }
+                    }
+                    ?>
                 </ul>
                 <ul class="nav navbar-nav ml-auto" id="right_nav">
-                    <?php 
-                    session_start();
+                    <?php
                     if (isset($_SESSION["user"])) {
                         $nombre = $_SESSION["user"];
                         echo "<li class='nav-item' role='presentation'><a class='nav-link' href='#'>$nombre</a></li>";
@@ -45,10 +52,12 @@
         </div>
     </nav>
     <section id="section1">
-        <div class="container">    
-        <a class="btn btn-primary" id="principal_button" href="nuevoCanal.php">Nuevo Canal</a>
-        <h1 id="canales_heading">Listado de todos los Canales dados de alta</h1> 
-            <?php include("../laboratorioweb/scripts/selectAllChannelsUserLogin.php")?>
+        <div class="container">
+            <a class="btn btn-primary" id="principal_button" href="nuevoCanal.php">Nuevo Canal</a>
+            <h1 id="canales_heading">Listado de todos los Canales dados de alta</h1>
+            <?php
+            include("../laboratorioweb/scripts/selectAllChannelsUserLogin.php");
+            ?>
         </div>
     </section>
     <script src="assets/js/jquery.min.js"></script>

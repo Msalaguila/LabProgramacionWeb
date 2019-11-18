@@ -15,7 +15,6 @@ if (mysqli_connect_errno()) {
     die(mysqli_connect_error());
 }
 
-// 4. Checking if the table is created
 $currentUserID = $_SESSION["userID"];
 
 $sqlUser = "SELECT * FROM canales where id_user='$currentUserID'";
