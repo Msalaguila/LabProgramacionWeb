@@ -28,16 +28,16 @@
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item active normal" href="canales.php">Canales</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Ayuda</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link normal" href="contacto.php">Contacto</a></li>
-                    <?php
+                   <!--SI HAY USUARIO LOGEADO PONEMOS OPCIÓN DE MOSTRAR CANALES-->
+                   <?php
                     if (isset($_SESSION["user"])) {
                         $nombre = $_SESSION["user"];
-                        if ($nombre == "admin@gmail.com") {
-                            echo "<li class='nav-item' role='presentation'><a class='nav-link' href='nuevoproducto.php'>Crear Producto</a></li>";
-                        }
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='paginaPrincipalProductos.php'>Productos</a></li>";
                     }
                     ?>
                 </ul>
                 <ul class="nav navbar-nav ml-auto" id="right_nav">
+                    <!--SI HAY USUARIO LOGEADO PONEMOS OPCIÓN DE LOGOUT-->
                     <?php
                     if (isset($_SESSION["user"])) {
                         $nombre = $_SESSION["user"];

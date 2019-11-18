@@ -16,8 +16,13 @@ if (mysqli_connect_errno()) {
 }
 
 $currentUserID = $_SESSION["userID"];
+$currentUserName = $_SESSION["user"];
 
-$sqlUser = "SELECT * FROM canales where id_user='$currentUserID'";
+if ($currentUserName == "admin@gmail.com") {
+    $sqlUser = "SELECT * FROM canales";
+} else {
+    $sqlUser = "SELECT * FROM canales where id_user='$currentUserID'";
+}
 
 $nombreCanal = "";
 $descripcionCanal = "";
@@ -35,7 +40,7 @@ if ($result = mysqli_query($connection, $sqlUser)) {
         $idUser = $row["id_user"];
         $idChannel = $row["id"];
 
-        $sqlUser = "SELECT * FROM users WHERE id='$currentUserID'";
+        $sqlUser = "SELECT * FROM users WHERE id='$idUser'";
         $userName = 0;
         if ($result2 = mysqli_query($connection, $sqlUser)) {
             if ($row2 = mysqli_fetch_assoc($result2)) {

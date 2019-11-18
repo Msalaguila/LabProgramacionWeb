@@ -40,8 +40,13 @@
                     <?php 
                         if (isset($_SESSION["user"])) {
                             $nombre = $_SESSION["user"];
+                            // ADMIN LOGEADO
                             if ($nombre == "admin@gmail.com") {
-                                echo "<li class='nav-item' role='presentation'><a class='nav-link' href='nuevoproducto.php'>Crear Producto</a></li>";
+                                echo "<li class='nav-item' role='presentation'><a class='nav-link' href='paginaPrincipalProductos.php'>Productos</a></li>";
+                            } 
+                            // OTRO USUARIO LOGEADO
+                            else {
+                                echo "<li class='nav-item' role='presentation'><a class='nav-link' href='paginaPrincipalProductos.php'>Productos</a></li>";
                             }
                         }
                     ?>                   
