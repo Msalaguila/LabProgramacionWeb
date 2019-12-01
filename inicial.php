@@ -45,10 +45,6 @@
                             if ($nombre == "admin@gmail.com") {
                                 echo "<li class='nav-item' role='presentation'><a class='nav-link' href='paginaPrincipalProductos.php'>Productos</a></li>";
                             } 
-                            // OTRO USUARIO LOGEADO
-                            else {
-                                echo "<li class='nav-item' role='presentation'><a class='nav-link' href='paginaPrincipalProductos.php'>Productos</a></li>";
-                            }
                         }
                     ?>                   
                 </ul>
