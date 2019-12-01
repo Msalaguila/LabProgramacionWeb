@@ -48,8 +48,15 @@
         </div>
     </nav>
     <div class="login-clean">
-    <form method="POST" action="../laboratorioweb/scripts/crearproducto.php">
-            <h1 id="nuevo_canal_heading">Nuevo Producto</h1>
+    <form method="POST" action="../laboratorioweb/scripts/editProduct.php">
+
+    <!-- PASAMOS EL ID DEL PRODUCTO PARA QUE SE PUEDA EDITAR EN EL SCRIPT -->
+    <?php 
+        if (isset($_GET["id"])) {
+            $_SESSION["productID"] = $_GET["id"];
+        }
+    ?>
+            <h1 id="nuevo_canal_heading"> Editar Producto</h1>
             <div class="illustration"><img id="form_image" src="assets/img/0ZEt7WEWx1CUeUKrd.png"></div>
             <div class="input-group" id="inputs_formulario">
                 <div class="input-group-prepend"><span class="input-group-text">Nombre Producto</span></div><input class="form-control" type="text" id="nombreProducto" name="nombreProducto" required>
@@ -60,7 +67,7 @@
                 <div class="input-group-append"></div>
             </div>
             <div class="form-group" id="descripcion"><textarea class="form-control" id="descripcion" placeholder="Descripcion" name="descripcion" required></textarea></div>
-            <div class="form-group"><button class="btn btn-primary btn-block" id="nuevo_canal_button" type="submit">Registrar Nuevo Producto</button></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" id="nuevo_canal_button" type="submit">Editar Producto Existente</button></div>
         </form>
     </div>
     <script src="assets/js/jquery.min.js"></script>
