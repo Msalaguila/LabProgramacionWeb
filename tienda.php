@@ -72,26 +72,7 @@
             </div>
             <div class="row shop2" style="margin-top: 20px;">
                 <div class="col d-flex justify-content-center flex-wrap">
-                    <div class="card item">
-                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                            <h4 class="card-title">Producto 1</h4>
-                            <p class="card-text">Precio:&nbsp;</p><button class="btn btn-primary" type="button">Añadir al carrito</button></div>
-                    </div>
-                    <div class="card item">
-                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                            <h4 class="card-title">Producto 1</h4>
-                            <p class="card-text">Precio:&nbsp;</p><button class="btn btn-primary" type="button">Añadir al carrito</button></div>
-                    </div>
-                    <div class="card item">
-                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                            <h4 class="card-title">Producto 1</h4>
-                            <p class="card-text">Precio:&nbsp;</p><button class="btn btn-primary" type="button">Añadir al carrito</button></div>
-                    </div>
-                    <div class="card item">
-                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                            <h4 class="card-title">Producto 1</h4>
-                            <p class="card-text">Precio:&nbsp;</p><button class="btn btn-primary" type="button">Añadir al carrito</button></div>
-                    </div>
+                    <?php include("./scripts/getAllShopProducts.php");?>
                 </div>
             </div>
         </div>
