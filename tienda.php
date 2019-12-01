@@ -29,7 +29,7 @@
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="canales.php">Canales</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Ayuda</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="contacto.php">Contacto</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active normal" href="contacto.html">MyIoT Shop</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active normal" href="tienda.php">MyIoT Shop</a></li>
                     <?php 
                         if (isset($_SESSION["user"])) {
                             $nombre = $_SESSION["user"];
@@ -59,14 +59,14 @@
     <section class="section_shop">
         <div class="container shop">
             <div class="row d-flex flex-row">
-                <div class="col-8 d-flex article1_shop">
+                <div class="col-9 d-flex article1_shop">
                     <article class="text-break article1_shop">
                         <h1 class="article1_shop_heading">Bienvenidos a la tienda virtual de MyWebIoT</h1>
                         <p style="padding: 2px;">ParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraph</p>
                     </article>
                 </div>
                 <div class="col d-flex">
-                    <article class="text-break d-flex flex-column justify-content-center align-items-center article1_shop"><a href="#">Mostrar carrito</a>
+                    <article class="text-break d-flex flex-column justify-content-center align-items-center article1_shop"><a href="#canales_heading">Mostrar carrito</a>
                         <p style="padding: 2px;">Checkout</p><button class="btn btn-primary checkout" type="button">Realizar Checkout</button></article>
                 </div>
             </div>
@@ -75,6 +75,12 @@
                     <?php include("./scripts/getAllShopProducts.php");?>
                 </div>
             </div>
+            <br>
+
+            <?php
+                include("../laboratorioweb/scripts/showCarrito.php");
+            ?>
+
         </div>
     </section>
     <script src="assets/js/jquery.min.js"></script>

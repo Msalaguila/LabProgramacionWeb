@@ -13,9 +13,6 @@ if (mysqli_connect_errno()) {
     die(mysqli_connect_error());
 }
 
-$currentUserID = $_SESSION["userID"];
-$currentUserName = $_SESSION["user"];
-
 $sql = "SELECT * FROM productos"; 
 
 $nombreProducto = "";
@@ -35,7 +32,7 @@ if ($result = mysqli_query($connection, $sql)) {
         echo "<div class='card-body d-flex flex-column justify-content-center align-items-center'>";
         echo "<h4 class='card-title'>Producto: $nombreProducto</h4>";
         echo "<p class='card-text'>Precio: $precioProducto €</p>";
-        echo "<button class='btn btn-primary' type='button'>Añadir al carrito</button>";
+        echo "<a href=\"scripts/addItemToCart.php?id=$idProducto\"><button class='btn btn-primary' type='button'>Añadir al carrito</button></a>";
         echo "</div>";
         echo "</div>";
     }
