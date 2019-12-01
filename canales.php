@@ -36,6 +36,7 @@
                     <li class="nav-item" role="presentation"><a class="nav-link active nav_item" href="canales.php">Canales</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" id="nav_link2" href="#">Ayuda</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link normal" href="contacto.php">Contacto</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link normal" href="tienda.php">MyIoT Shop</a></li>
                     <?php 
                         if (isset($_SESSION["user"])) {
                             echo "<li class='nav-item' role='presentation'><a class='nav-link' href='nuevoproducto.php'>Crear Producto</a></li>";

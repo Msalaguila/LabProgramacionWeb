@@ -40,6 +40,7 @@ if ($result = mysqli_query($connection, $sqlUser)) {
         echo "<p id='paragraph_canales'>Descripción: $descripcionProducto</p>";
         echo "<p id='paragraph_canales'>Fecha de creación: $precioProducto</p>";
         echo "<p id='paragraph_canales'>Precio: $precioProducto €</p>";
+        echo "<a href='#' <p id='paragraph_canales'>Añadir al carrito </p></a>";
         echo "</article>";
     }
 }

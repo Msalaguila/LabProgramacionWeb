@@ -28,6 +28,7 @@
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="canales.php">Canales</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Ayuda</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active normal" href="contacto.php">Contacto</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link normal" href="tienda.php">MyIoT Shop</a></li>
                     <!--SI HAY USUARIO LOGEADO PONEMOS OPCIÓN DE MOSTRAR CANALES-->
                     <?php
                     if (isset($_SESSION["user"])) {

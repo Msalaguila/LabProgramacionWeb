@@ -28,6 +28,7 @@
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item normal" href="canales.php">Canales</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Ayuda</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link normal" href="contacto.php">Contacto</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="tienda.php">MyIoT Shop</a></li>
                     <!--SI HAY USUARIO LOGEADO PONEMOS OPCIÓN DE MOSTRAR CANALES-->
                     <?php
                     if (isset($_SESSION["user"])) {
@@ -52,6 +53,27 @@
         </div>
     </nav>
     <section id="section1">
+        <div class="login-clean">
+            <form method="POST" action="../laboratorioweb/scripts/payments.php">
+                <input type="hidden" name="cmd" value="_xclick" />
+                <input type="hidden" name="no_note" value="1" />
+                <input type="hidden" name="lc" value="UK" />
+                <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
+                <h1 id="nuevo_canal_heading">Comprar Producto</h1>
+                <div class="illustration"><img id="form_image" src="assets/img/0ZEt7WEWx1CUeUKrd.png"></div>
+                <div class="input-group" id="inputs_formulario">
+                    <div class="input-group-prepend"><span class="input-group-text">Tipo Producto</span></div><input class="form-control" type="text" id="item_name" name="item_name" required>
+                    <div class="input-group-append"></div>
+                </div>
+                <div class="input-group" id="inputs_formulario">
+                    <div class="input-group-prepend"><span class="input-group-text">Precio Producto</span></div><input class="form-control" type="number" id="item_amount" name="item_amount" inputmode="numeric" step=".01" required>
+                    <div class="input-group-append"></div>
+                </div>
+                <div class="form-group" id="descripcion"><textarea class="form-control" id="descripcion" placeholder="Descripcion" name="descripcion" required></textarea></div>
+                <div class="form-group"><button class="btn btn-primary btn-block" id="nuevo_canal_button" type="submit">Comprar Producto</button></div>
+            </form>
+        </div>
+
         <div class="container">
             <?php
             // SI EL ADMIN ESTÁ LOGEADO LE PONEMOS EL BOTÓN DE AÑADIR PRODUCTOS
@@ -69,7 +91,7 @@
                 // SI EL ADMIN ESTÁ LOGEADO MOSTRAMOS LOS CANALES CON OPCIÓN DE BORRARLOS
                 if ($nombre == "admin@gmail.com") {
                     include("../laboratorioweb/scripts/selectAllProductsAdminLogin.php");
-                } 
+                }
                 // SI EL ADMIN NO ESTÁ LOGEADO MOSTRAMOS LOS CANALES NORMALES
                 else {
                     include("../laboratorioweb/scripts/selectAllProductsUserLogin.php");

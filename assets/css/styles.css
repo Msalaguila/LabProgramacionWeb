@@ -1,11 +1,57 @@
-.columnaizquierda {
-    max-width: 4%;
-    margin-right: 30px;
-    margin-left: 5px;
-    border: solid;
-    text-align: center;
-    border-width: 1px;
-    border-color: blue;
-    border-radius: 5px;
-    background-color: antiquewhite;
+.section_shop {
+  width: 100%;
+  margin-top: 20px;
 }
+
+.container.shop {
+}
+
+.col.article1_shop {
+}
+
+.article1_shop {
+  border: 1px solid rgb(35,150,243);
+  border-radius: 5px;
+  padding: 0;
+}
+
+.article1_shop_checkout {
+  border: 1px solid rgb(35,150,243);
+  border-radius: 5px;
+}
+
+.btn.btn-primary.checkout {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.col.2_shop {
+}
+
+.col.shop2 {
+  margin-top: 20px;
+}
+
+.row.shop2 {
+  border: 1px solid rgb(35,150,243);
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.card-deck.card-group {
+  column-count: 4;
+}
+
+.card.item {
+  height: 200px;
+  width: 300px;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid rgb(35,150,243);
+}
+
+.row.shop2 {
+  border: 1px solid rgb(35,150,243);
+  border-radius: 5px;
+}
+
