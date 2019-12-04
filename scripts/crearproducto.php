@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (mysqli_query($connection, $sql)) {
                 echo "New record created successfully";
-                header('Location: ../nuevoproducto.php');
+                header('Location: ../paginaPrincipalProductos.php');
                 exit;
             } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($connection);

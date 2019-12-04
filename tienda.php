@@ -17,28 +17,40 @@
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <?php session_start(); ?>
+
+
+    <!-- MOSTRAMOS MENSAJE CUANDO EL USUARIO NO ESTÁ LOGEADO E INTENTA PAGAR-->
+    <?php
+    if (isset($_SESSION["errorLogeadoTienda"])) {
+        echo '<script language="javascript">';
+        echo 'alert("Necesitas estar logeado para realizar el pago")';  //not showing an alert box.
+        echo '</script>';
+        unset($_SESSION["errorLogeadoTienda"]);
+    }
+
+    ?>
+
 </head>
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md" id="navbar" href="#">
         <div class="container-fluid"><a class="navbar-brand" id="page_icon" href="inicial.html"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
+            <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav mr-auto" id="main_nav">
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="inicial.php">MyWebIoT</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="canales.php">Canales</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Ayuda</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="contacto.php">Contacto</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active normal" href="tienda.php">MyIoT Shop</a></li>
-                    <?php 
-                        if (isset($_SESSION["user"])) {
-                            $nombre = $_SESSION["user"];
-                            // ADMIN LOGEADO
-                            if ($nombre == "admin@gmail.com") {
-                                echo "<li class='nav-item' role='presentation'><a class='nav-link' href='paginaPrincipalProductos.php'>Productos</a></li>";
-                            }
+                    <?php
+                    if (isset($_SESSION["user"])) {
+                        $nombre = $_SESSION["user"];
+                        // ADMIN LOGEADO
+                        if ($nombre == "admin@gmail.com") {
+                            echo "<li class='nav-item' role='presentation'><a class='nav-link' href='paginaPrincipalProductos.php'>Productos</a></li>";
                         }
-                    ?>    
+                    }
+                    ?>
                 </ul>
                 <ul class="nav navbar-nav ml-auto" id="right_nav">
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item"></a></li>
@@ -67,20 +79,29 @@
                 </div>
                 <div class="col d-flex">
                     <article class="text-break d-flex flex-column justify-content-center align-items-center article1_shop"><a href="#canales_heading">Mostrar carrito</a>
-                        <p style="padding: 2px;">Checkout</p><button class="btn btn-primary checkout" type="button">Realizar Checkout</button></article>
+                        <p style="padding: 2px;">Checkout</p>
+
+                        <form class="paypal" action="scripts/payments.php" method="post" id="paypal_form">
+                            <input type="hidden" name="cmd" value="_xclick" />
+                            <input type="hidden" name="no_note" value="1" />
+                            <input type="hidden" name="lc" value="UK" />
+                            <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
+
+
+                            <input class="btn btn-primary checkout" type="submit" name="submit" value="Realizar Checkout" />
+                        </form>
+                    </article></a>
                 </div>
             </div>
             <div class="row shop2" style="margin-top: 20px;">
                 <div class="col d-flex justify-content-center flex-wrap">
-                    <?php include("./scripts/getAllShopProducts.php");?>
+                    <?php include("./scripts/getAllShopProducts.php"); ?>
                 </div>
             </div>
             <br>
-
             <?php
-                include("../laboratorioweb/scripts/showCarrito.php");
+            include("../laboratorioweb/scripts/showCarrito.php");
             ?>
-
         </div>
     </section>
     <script src="assets/js/jquery.min.js"></script>

@@ -1,7 +1,17 @@
 <?php
+session_start();
+// ANTES DE NADA COMPROBAMOS QUE EXISTA UN USUARIO LOGEADO
+
+if (!isset($_SESSION["user"])) {
+	header('Location: ../tienda.php');
+	$_SESSION["errorLogeadoTienda"] = 1; 
+	exit;
+}
+
 
 // For test payments we want to enable the sandbox mode. If you want to put live
 // payments through then this setting needs changing to `false`.
+
 $enableSandbox = true;
 
 // Database settings. Change these for your database configuration.
@@ -24,8 +34,8 @@ $paypalConfig = [
 $paypalUrl = $enableSandbox ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 'https://www.paypal.com/cgi-bin/webscr';
 
 // Product being purchased.
-$itemName = $_POST['item_name'];
-$itemAmount = $_POST['item_amount'];
+$itemName = "Compra MyIoT";
+$itemAmount = 100;
 
 // Include Functions
 require 'functions.php';
