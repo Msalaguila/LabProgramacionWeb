@@ -19,7 +19,7 @@
     <?php session_start(); ?>
 
 
-    <!-- MOSTRAMOS MENSAJE CUANDO EL USUARIO NO ESTÁ LOGEADO E INTENTA PAGAR-->
+    <!-- MOSTRAMOS MENSAJE CUANDO EL USUARIO NO ESTÁ LOGEADO E INTENTA PAGAR -->
     <?php
     if (isset($_SESSION["errorLogeadoTienda"])) {
         echo '<script language="javascript">';
@@ -27,7 +27,16 @@
         echo '</script>';
         unset($_SESSION["errorLogeadoTienda"]);
     }
+    ?>
 
+    <!-- MOSTRAMOS MENSAJE CUANDO CARRITO ESTÁ VACÍO -->
+    <?php
+    if (isset($_SESSION["errorCarritoVacio"])) {
+        echo '<script language="javascript">';
+        echo 'alert("El carrito se encuentra vacío")';  //not showing an alert box.
+        echo '</script>';
+        unset($_SESSION["errorCarritoVacio"]);
+    }
     ?>
 
 </head>

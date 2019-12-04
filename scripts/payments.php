@@ -1,10 +1,19 @@
 <?php
 session_start();
+
 // ANTES DE NADA COMPROBAMOS QUE EXISTA UN USUARIO LOGEADO
 
 if (!isset($_SESSION["user"])) {
 	header('Location: ../tienda.php');
 	$_SESSION["errorLogeadoTienda"] = 1; 
+	exit;
+}
+
+// DESPUÉS COMPROBAMOS QUE EL USUARIO NO ESTÉ VACÍO
+
+if (!isset($_SESSION["carrito"])) {
+	header('Location: ../tienda.php');
+	$_SESSION["errorCarritoVacio"] = 1; 
 	exit;
 }
 
