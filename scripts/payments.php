@@ -5,7 +5,7 @@ session_start();
 
 if (!isset($_SESSION["user"])) {
 	header('Location: ../tienda.php');
-	$_SESSION["errorLogeadoTienda"] = 1; 
+	$_SESSION["errorLogeadoTienda"] = 1;
 	exit;
 }
 
@@ -13,7 +13,7 @@ if (!isset($_SESSION["user"])) {
 
 if (!isset($_SESSION["carrito"])) {
 	header('Location: ../tienda.php');
-	$_SESSION["errorCarritoVacio"] = 1; 
+	$_SESSION["errorCarritoVacio"] = 1;
 	exit;
 }
 
@@ -42,9 +42,38 @@ $paypalConfig = [
 
 $paypalUrl = $enableSandbox ? 'https://www.sandbox.paypal.com/cgi-bin/webscr' : 'https://www.paypal.com/cgi-bin/webscr';
 
+// CONTAMOS EL TOTAL AÑADIDO AL CARRITO
+
+$host = "localhost";
+$database = "laboratorioweb";
+$user = "root";
+$databasePassword = "";
+
+$connection = mysqli_connect($host, $user, $databasePassword, $database);
+
+$totalAPagar = 0;
+
+foreach ($_SESSION['carrito'] as $key => $valor) {
+
+	$idProducto = $key;
+	$cantidadProducto = $valor;
+
+	$sql = "SELECT * FROM productos WHERE id = '$idProducto'";
+
+	if ($result = mysqli_query($connection, $sql)) {
+		while ($row = mysqli_fetch_array($result)) {
+			$precioProducto = $row["precio"];
+
+			$totalAPagar = $totalAPagar + ($cantidadProducto * $precioProducto);
+		}
+	}
+}
+mysqli_close($connection);
+
+
 // Product being purchased.
 $itemName = "Compra MyIoT";
-$itemAmount = 100;
+$itemAmount = $totalAPagar;
 
 // Include Functions
 require 'functions.php';
@@ -83,7 +112,6 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])) {
 	// Redirect to paypal IPN
 	header('location:' . $paypalUrl . '?' . $queryString);
 	exit();
-
 } else {
 	// Handle the PayPal response.
 
