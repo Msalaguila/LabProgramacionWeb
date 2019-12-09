@@ -43,12 +43,14 @@ if (isset($_GET["add"])) {
         mysqli_query($connection, $sqlSeguir);
     }
 
-    echo "$idUsuarioASeguir";
-} elseif (isset($_GET["remove"])) {
+} 
+// 5.2 Si se ha presionado en DEJAR DE SEGUIR 
+elseif (isset($_GET["remove"])) {
 
+    $idUsuarioADejarDeSeguir = $_GET["remove"];
+    $sqlBorrar = "DELETE FROM amigos WHERE id_usuario = '$idUsuarioLogeado' AND id_amigo = '$idUsuarioADejarDeSeguir'";
+    mysqli_query($connection, $sqlBorrar);
 }
-
-echo "ID usuario logeado $idUsuarioLogeado";
 
 
 // Finalmente mostramos la relación entre los usuarios
@@ -88,7 +90,7 @@ if ($result = mysqli_query($connection, $sqlUsuarios)) {
         if (!$t2) {
             echo "<a href='./miembros.php?add=" . $idUsuario . "'>Seguir</a></p>";
         } else {
-            echo "<a href='./miembros.php?add=" . $idUsuario . "'>Dejar de seguir</a></p>";
+            echo "<a href='./miembros.php?remove=" . $idUsuario . "'>Dejar de seguir</a></p>";
         }
     }
 }
