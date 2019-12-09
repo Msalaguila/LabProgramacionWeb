@@ -45,6 +45,7 @@
                             if ($nombre == "admin@gmail.com") {
                                 echo "<li class='nav-item' role='presentation'><a class='nav-link' href='paginaPrincipalProductos.php'>Productos</a></li>";
                             } 
+                            echo "<li class='nav-item' role='presentation'><a class='nav-link' href='social.php'>MyIoT Social</a></li>";
                         }
                     ?>                   
                 </ul>

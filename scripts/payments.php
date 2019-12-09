@@ -35,7 +35,7 @@ $dbConfig = [
 // for your site.
 $paypalConfig = [
 	'email' => 'sb-dsigs592244@business.example.com',
-	'return_url' => 'http://193.145.145.251/payPal/payment-successful.html',
+	'return_url' => 'http://localhost/proyectos-clase/laboratorioweb/tienda.php',
 	'cancel_url' => 'http://193.145.145.251/payPal/payment-cancelled.html',
 	'notify_url' => 'http://193.145.145.251/payPal/payments.php'
 ];
@@ -68,15 +68,15 @@ foreach ($_SESSION['carrito'] as $key => $valor) {
 		}
 	}
 }
-mysqli_close($connection);
 
+//mysqli_close($connection);
 
 // Product being purchased.
 $itemName = "Compra MyIoT";
 $itemAmount = $totalAPagar;
 
 // Include Functions
-require 'functions.php';
+// require 'functions.php';
 
 // Check if paypal request or response
 if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])) {
@@ -116,7 +116,7 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])) {
 	// Handle the PayPal response.
 
 	// Create a connection to the database.
-	$db = new mysqli($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['name']);
+	// $db = new mysqli($dbConfig['host'], $dbConfig['username'], $dbConfig['password'], $dbConfig['name']);
 
 	// Assign posted variables to local data array.
 	$data = [
@@ -131,12 +131,18 @@ if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])) {
 		'custom' => $_POST['custom'],
 	];
 
+	$_SESSION["paypal"] = $data;
+
 	// We need to verify the transaction comes from PayPal and check we've not
 	// already processed the transaction before adding the payment to our
 	// database.
-	if (verifyTransaction($_POST) && checkTxnid($data['txn_id'])) {
+	if (verifyTransaction($_POST, $data) && checkTxnid($data['txn_id'])) {
 		if (addPayment($data) !== false) {
 			// Payment successfully added.
+			
 		}
 	}
+
+	// EN UN CASO REAL DEBEMOS DE AÑADIR LOS PAGOS UNA VEZ HAN SIDO VERIFICADOS PERO LOS VAMOS A HACER AQUÍ ANTES YA QUE NO PODEMOS
+	// VINCULAR LA RED PRIVADA CON LA PÚBLICA 
 }

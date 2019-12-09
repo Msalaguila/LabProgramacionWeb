@@ -15,39 +15,9 @@
     <link rel="stylesheet" href="assets/css/Navigation-Clean-1.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean-2.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
+    <link rel="stylesheet" href="assets/css/Profile-Card.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <?php session_start(); ?>
-
-
-    <!-- MOSTRAMOS MENSAJE CUANDO EL USUARIO NO ESTÁ LOGEADO E INTENTA PAGAR -->
-    <?php
-    if (isset($_SESSION["errorLogeadoTienda"])) {
-        echo '<script language="javascript">';
-        echo 'alert("Necesitas estar logeado para realizar el pago")';  //not showing an alert box.
-        echo '</script>';
-        unset($_SESSION["errorLogeadoTienda"]);
-    }
-    ?>
-
-    <!-- MOSTRAMOS MENSAJE CUANDO CARRITO ESTÁ VACÍO -->
-    <?php
-    if (isset($_SESSION["errorCarritoVacio"])) {
-        echo '<script language="javascript">';
-        echo 'alert("El carrito se encuentra vacío")';  //not showing an alert box.
-        echo '</script>';
-        unset($_SESSION["errorCarritoVacio"]);
-    }
-    ?>
-
-    <?php
-    if (isset($_SESSION["paypal"])) {
-        echo '<script language="javascript">';
-        echo 'alert($_SESSION["paypal"]")';  //not showing an alert box.
-        echo '</script>';
-        unset($_SESSION["errorCarritoVacio"]);
-    }
-    ?>
-
 </head>
 
 <body>
@@ -59,7 +29,7 @@
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="canales.php">Canales</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Ayuda</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="contacto.php">Contacto</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active normal" href="tienda.php">MyIoT Shop</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="tienda.php">MyIoT Shop</a></li>
                     <?php
                     if (isset($_SESSION["user"])) {
                         $nombre = $_SESSION["user"];
@@ -67,7 +37,7 @@
                         if ($nombre == "admin@gmail.com") {
                             echo "<li class='nav-item' role='presentation'><a class='nav-link' href='paginaPrincipalProductos.php'>Productos</a></li>";
                         }
-                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='social.php'>MyIoT Social</a></li>";
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link active normal' href='social.php'>MyIoT Social</a></li>";
                     }
                     ?>
                 </ul>
@@ -89,37 +59,42 @@
     </nav>
     <section class="section_shop">
         <div class="container shop">
-            <div class="row d-flex flex-row">
-                <div class="col-9 d-flex article1_shop">
+            <div class="row">
+                <div class="col article1_shop">
                     <article class="text-break article1_shop">
-                        <h1 class="article1_shop_heading">Bienvenidos a la tienda virtual de MyWebIoT</h1>
+                        <h1 class="article1_shop_heading">Bienvenidos a la red social de MyWebIoT</h1>
                         <p style="padding: 2px;">ParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraph</p>
                     </article>
                 </div>
-                <div class="col d-flex">
-                    <article class="text-break d-flex flex-column justify-content-center align-items-center article1_shop"><a href="#canales_heading">Mostrar carrito</a>
-                        <p style="padding: 2px;">Checkout</p>
-
-                        <form class="paypal" action="scripts/payments.php" method="post" id="paypal_form">
-                            <input type="hidden" name="cmd" value="_xclick" />
-                            <input type="hidden" name="no_note" value="1" />
-                            <input type="hidden" name="lc" value="UK" />
-                            <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest" />
-
-                            <input class="btn btn-primary checkout" type="submit" name="submit" value="Realizar Checkout" />
-                        </form>
-                    </article></a>
+            </div>
+            <div class="row d-flex flex-row justify-content-around" style="margin-top: 20px;">
+                <div class="col-9 d-flex flex-column justify-content-center align-items-center article1_shop" style="margin-right: 10px;">
+                    <h3 style="margin-top: 10px;">Mi perfil</h3><img class="rounded-circle" src="assets/img/avatar-dhg.png">
+                    <p class="text-center paragraph-profile">Mi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estado</p>
+                    <p class="text-center paragraph-profile">Amigos: 20</p>
+                </div>
+                <div class="col d-flex flex-column article1_shop">
+                    <h3 class="text-center" style="margin-top: 10px;">Opciones</h3>
+                    <div class="row">
+                        <div class="col d-flex flex-column justify-content-center align-items-center">
+                            <a href="#"> <button class="btn btn-primary opciones-perfil" type="button">Amigos</button> </a>
+                            <a href="#"> <button class="btn btn-primary opciones-perfil" type="button">Miembros</button> </a>
+                            <a href="#"> <button class="btn btn-primary opciones-perfil-naranja" type="button">Mensajes</button> </a>
+                            <a href="canales.php"><button class="btn btn-primary opciones-perfil-naranja" type="button">Canales</button> </a>
+                            <a href="#"> <button class="btn btn-primary opciones-perfil-naranja" type="button">Perfil</button> </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row shop2" style="margin-top: 20px;">
-                <div class="col d-flex justify-content-center flex-wrap">
-                    <?php include("./scripts/getAllShopProducts.php"); ?>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col article1_shop">
+                    <article class="text-break article1_shop">
+                        <h3 style="margin-left: 10px;">Muro de MyWebIoT</h3>
+                        <p class="mensajes-perfil-muro">Último mensaje público</p>
+                        <p class="mensajes-perfil-muro">Penúltimo mensaje</p>
+                    </article>
                 </div>
             </div>
-            <br>
-            <?php
-            include("../laboratorioweb/scripts/showCarrito.php");
-            ?>
         </div>
     </section>
     <script src="assets/js/jquery.min.js"></script>
