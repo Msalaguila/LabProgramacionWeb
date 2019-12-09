@@ -63,11 +63,7 @@
                 <div class="col article1_shop">
                     <article class="text-break article1_shop">
                         <h1 class="article1_shop_heading">Mis amigos</h1>
-                        <p class="parrafo-miembros-social">Miembro 1</p>
-                        <p class="parrafo-miembros-social">Miembro 1</p>
-                        <p class="parrafo-miembros-social">Miembro 1</p>
-                        <p class="parrafo-miembros-social">Miembro 1</p>
-                        <p class="parrafo-miembros-social">Miembro 1</p>
+                        <?php include('./scripts/showFriends.php');?>
                     </article>
                 </div>
             </div>
