@@ -19,6 +19,11 @@ if (isset($_SESSION['carrito'])) {
     // Si queda 1 elemento antes de borrar, lo quitamos del carrito
     elseif ($cantidadActual == 1) {
         unset($_SESSION['carrito'][$idProducto]);
+        
+        // Si no hay más elementos en el carrito, lo borramos por completo
+        if (empty($_SESSION["carrito"])) {
+            unset($_SESSION["carrito"]);
+        }
     } else {
         // Si no, decrementamos en 1 la cantidad del carrito
         $_SESSION['carrito'][$idProducto] = $cantidadActual - 1;

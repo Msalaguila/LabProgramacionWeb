@@ -9,7 +9,7 @@ if (!isset($_SESSION["user"])) {
 	exit;
 }
 
-// DESPUÉS COMPROBAMOS QUE EL USUARIO NO ESTÉ VACÍO
+// DESPUÉS COMPROBAMOS QUE EL CARRITO NO ESTÉ VACÍO
 
 if (!isset($_SESSION["carrito"])) {
 	header('Location: ../tienda.php');
