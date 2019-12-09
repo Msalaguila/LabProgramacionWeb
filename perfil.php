@@ -57,46 +57,18 @@
             </div>
         </div>
     </nav>
-    <section class="section_shop">
-        <div class="container shop">
-            <div class="row">
-                <div class="col article1_shop">
-                    <article class="text-break article1_shop">
-                        <h1 class="article1_shop_heading">Bienvenidos a la red social de MyWebIoT</h1>
-                        <p style="padding: 2px;">ParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraph</p>
-                    </article>
-                </div>
+    <div class="login-clean">
+        <form method="POST" action="./scripts/changeProfile.php">
+            <h1 id="nuevo_canal_heading">Perfil</h1>
+            <div class="illustration"><img id="form_image" src="assets/img/0ZEt7WEWx1CUeUKrd.png"></div>
+            <div class="input-group" id="inputs_formulario">
+                <div class="input-group-prepend"><span class="input-group-text">Nombre</span></div><input class="form-control" type="text" id="nombre_canal" name="nombreUsuario" required>
+                <div class="input-group-append"></div>
             </div>
-            <div class="row d-flex flex-row justify-content-around" style="margin-top: 20px;">
-                <div class="col-9 d-flex flex-column justify-content-center align-items-center article1_shop" style="margin-right: 10px;">
-                    <h3 style="margin-top: 10px;">Mi perfil</h3><img class="rounded-circle" src="assets/img/avatar-dhg.png">
-                    <p class="text-center paragraph-profile">Mi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estado</p>
-                    <p class="text-center paragraph-profile">Amigos: 20</p>
-                </div>
-                <div class="col d-flex flex-column article1_shop">
-                    <h3 class="text-center" style="margin-top: 10px;">Opciones</h3>
-                    <div class="row">
-                        <div class="col d-flex flex-column justify-content-center align-items-center">
-                            <a href="amigos.php"> <button class="btn btn-primary opciones-perfil" type="button">Amigos</button> </a>
-                            <a href="miembros.php"> <button class="btn btn-primary opciones-perfil" type="button">Miembros</button> </a>
-                            <a href="#"> <button class="btn btn-primary opciones-perfil-naranja" type="button">Mensajes</button> </a>
-                            <a href="canales.php"><button class="btn btn-primary opciones-perfil-naranja" type="button">Canales</button> </a>
-                            <a href="perfil.php"> <button class="btn btn-primary opciones-perfil-naranja" type="button">Perfil</button> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 10px;">
-                <div class="col article1_shop">
-                    <article class="text-break article1_shop">
-                        <h3 style="margin-left: 10px;">Muro de MyWebIoT</h3>
-                        <p class="mensajes-perfil-muro">Último mensaje público</p>
-                        <p class="mensajes-perfil-muro">Penúltimo mensaje</p>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="form-group" id="descripcion"><textarea class="form-control" id="descripcion" placeholder="Estado" name="estadoUsuario" required></textarea></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" id="nuevo_canal_button" type="submit">Actualizar</button></div>
+        </form>
+    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

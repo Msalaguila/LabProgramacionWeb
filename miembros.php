@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md" id="navbar" href="#">
+<nav class="navbar navbar-light navbar-expand-md" id="navbar" href="#">
         <div class="container-fluid"><a class="navbar-brand" id="page_icon" href="inicial.php"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav mr-auto" id="main_nav">
@@ -62,36 +62,12 @@
             <div class="row">
                 <div class="col article1_shop">
                     <article class="text-break article1_shop">
-                        <h1 class="article1_shop_heading">Bienvenidos a la red social de MyWebIoT</h1>
-                        <p style="padding: 2px;">ParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraph</p>
-                    </article>
-                </div>
-            </div>
-            <div class="row d-flex flex-row justify-content-around" style="margin-top: 20px;">
-                <div class="col-9 d-flex flex-column justify-content-center align-items-center article1_shop" style="margin-right: 10px;">
-                    <h3 style="margin-top: 10px;">Mi perfil</h3><img class="rounded-circle" src="assets/img/avatar-dhg.png">
-                    <p class="text-center paragraph-profile">Mi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estado</p>
-                    <p class="text-center paragraph-profile">Amigos: 20</p>
-                </div>
-                <div class="col d-flex flex-column article1_shop">
-                    <h3 class="text-center" style="margin-top: 10px;">Opciones</h3>
-                    <div class="row">
-                        <div class="col d-flex flex-column justify-content-center align-items-center">
-                            <a href="amigos.php"> <button class="btn btn-primary opciones-perfil" type="button">Amigos</button> </a>
-                            <a href="miembros.php"> <button class="btn btn-primary opciones-perfil" type="button">Miembros</button> </a>
-                            <a href="#"> <button class="btn btn-primary opciones-perfil-naranja" type="button">Mensajes</button> </a>
-                            <a href="canales.php"><button class="btn btn-primary opciones-perfil-naranja" type="button">Canales</button> </a>
-                            <a href="perfil.php"> <button class="btn btn-primary opciones-perfil-naranja" type="button">Perfil</button> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 10px;">
-                <div class="col article1_shop">
-                    <article class="text-break article1_shop">
-                        <h3 style="margin-left: 10px;">Muro de MyWebIoT</h3>
-                        <p class="mensajes-perfil-muro">Último mensaje público</p>
-                        <p class="mensajes-perfil-muro">Penúltimo mensaje</p>
+                        <h1 class="article1_shop_heading">Miembros registrados en la red social</h1>
+                        <p class="parrafo-miembros-social">Miembro 1</p>
+                        <p class="parrafo-miembros-social">Miembro 1</p>
+                        <p class="parrafo-miembros-social">Miembro 1</p>
+                        <p class="parrafo-miembros-social">Miembro 1</p>
+                        <p class="parrafo-miembros-social">Miembro 1</p>
                     </article>
                 </div>
             </div>
