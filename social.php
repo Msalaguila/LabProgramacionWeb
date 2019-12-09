@@ -70,8 +70,7 @@
             <div class="row d-flex flex-row justify-content-around" style="margin-top: 20px;">
                 <div class="col-9 d-flex flex-column justify-content-center align-items-center article1_shop" style="margin-right: 10px;">
                     <h3 style="margin-top: 10px;">Mi perfil</h3><img class="rounded-circle" src="assets/img/avatar-dhg.png">
-                    <p class="text-center paragraph-profile">Mi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estadoMi estado</p>
-                    <p class="text-center paragraph-profile">Amigos: 20</p>
+                    <?php include('./scripts/updateUserProfile.php');?>
                 </div>
                 <div class="col d-flex flex-column article1_shop">
                     <h3 class="text-center" style="margin-top: 10px;">Opciones</h3>
