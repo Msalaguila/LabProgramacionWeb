@@ -65,8 +65,12 @@ if ($result = mysqli_query($connection, $sqlUsuariosQueMeSiguen)) {
             while ($row2 = mysqli_fetch_array($result2)) {
                 $nombreUsuario = $row2["nombre"];
                 $correoUsuario = $row2["email"];
+                $idAmigo = $row2["id"];
 
-                echo "<p class='parrafo-miembros-social'><b> Nombre: </b> $nombreUsuario <b> --- Correo Electrónico: </b> $correoUsuario</p>";        
+                echo "<p class='parrafo-miembros-social'>
+                <b> Nombre: </b> $nombreUsuario --- 
+                <b> Correo Electrónico: <a href=\"./social.php?idUsuario=".$idAmigo."\" id='paragraph_canales'>  $correoUsuario </a></b> 
+                </p>";        
             }
         }
     }

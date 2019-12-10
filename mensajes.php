@@ -57,39 +57,22 @@
             </div>
         </div>
     </nav>
-    <section class="section_shop">
-        <div class="container shop">
-            <div class="row">
-                <div class="col article1_shop">
-                    <article class="text-break article1_shop">
-                        <h1 class="article1_shop_heading">Bienvenidos a la red social de MyWebIoT</h1>
-                        <p style="padding: 2px;">ParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraph</p>
+    <section>
+        <div class="container">
+            <div class="row d-flex flex-row" style="margin-top: 10px;">
+                <div class="col-4 text-left">
+                    <article class="text-center article1_shop">
+                        <h1 class="text-center" id="card_header">Enviar mensaje</h1>
+                        <div class="dropdown" style="margin-top: 10px;"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Destinatario</button>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                        </div><textarea style="margin-top: 10px;"></textarea>
+                        <div class="form-check" style="margin-top: 10px;"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Privado</label></div><button class="btn btn-primary" type="button" style="margin-top: 10px;margin-bottom: 10px;">ENVIAR</button>
                     </article>
                 </div>
-            </div>
-            <div class="row d-flex flex-row justify-content-around" style="margin-top: 20px;">
-                <div class="col-9 d-flex flex-column justify-content-center align-items-center article1_shop" style="margin-right: 10px;">
-                    <?php include('./scripts/updateUserProfile.php');?>
-                </div>
-                <div class="col d-flex flex-column article1_shop">
-                    <h3 class="text-center" style="margin-top: 10px;">Opciones</h3>
-                    <div class="row">
-                        <div class="col d-flex flex-column justify-content-center align-items-center">
-                            <a href="amigos.php"> <button class="btn btn-primary opciones-perfil" type="button">Amigos</button> </a>
-                            <a href="miembros.php"> <button class="btn btn-primary opciones-perfil" type="button">Miembros</button> </a>
-                            <a href="mensajes.php"> <button class="btn btn-primary opciones-perfil-naranja" type="button">Mensajes</button> </a>
-                            <a href="canalessocial.php"><button class="btn btn-primary opciones-perfil-naranja" type="button">Canales</button> </a>
-                            <a href="perfil.php"> <button class="btn btn-primary opciones-perfil-naranja" type="button">Perfil</button> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 10px;">
-                <div class="col article1_shop">
-                    <article class="text-break article1_shop">
-                        <h3 style="margin-left: 10px;">Muro de MyWebIoT</h3>
-                        <p class="mensajes-perfil-muro">Último mensaje público</p>
-                        <p class="mensajes-perfil-muro">Penúltimo mensaje</p>
+                <div class="col">
+                    <article class="article1_shop">
+                        <h1 class="text-center" id="card_header">Mensajes</h1>
+                        <p class="parrafo-miembros-social">Paragraph</p>
                     </article>
                 </div>
             </div>
