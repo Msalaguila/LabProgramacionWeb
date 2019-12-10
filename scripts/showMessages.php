@@ -1,6 +1,5 @@
 <?php
 
-
 $host = "localhost";
 $database = "laboratorioweb";
 $user = "root";
@@ -21,30 +20,53 @@ if (mysqli_connect_errno()) {
 
 $idUsuarioLogeado = $_SESSION["userID"];
 
+$sqlUsuarioLogeado = "SELECT * FROM users WHERE id = $idUsuarioLogeado";
+
+$nombreEmisor = "";
+
+if ($result1 = mysqli_query($connection, $sqlUsuarioLogeado)) {
+    if ($row1 = mysqli_fetch_assoc($result1)) {
+        $nombreEmisor = $row1["nombre"];
+        $emailReceptor = $row1["email"];
+    }
+}
+
+
+// MOSTRAMOS MENSAJES ENVIADOS
+
 $sqlMensajes = "SELECT * FROM mensajes WHERE sender = $idUsuarioLogeado";
+
+echo "<h3 class='parrafo-miembros-social'> Mensajes enviados </h3>";
 
 if ($result = mysqli_query($connection, $sqlMensajes)) {
     while ($row = mysqli_fetch_array($result)) {
         $senderID = $idUsuarioLogeado;
         $receiverID = $row["receiver"];
+        $privado = $row["privado"];
+        $fechaMensaje = $row["fecha"];
+        $mensaje = $row["mensaje"];
 
+        $sqlUser = "SELECT * FROM users WHERE id='$receiverID'";
 
-        $sqlUser = "SELECT * FROM users WHERE id='$idUser'";
-        $userName = 0;
         if ($result2 = mysqli_query($connection, $sqlUser)) {
             if ($row2 = mysqli_fetch_assoc($result2)) {
-                $userName = $row2["nombre"];
+                $nombreReceptor = $row2["nombre"];
+                $emailReceptor = $row2["email"];
+
+                echo "<p class='parrafo-miembros-social'>
+                <b>Mensaje:</b> $mensaje. 
+                <b>Receptor:</b> $nombreReceptor.
+                <b>Emisor:</b> $nombreEmisor.
+                <b>Fecha:</b> $fechaMensaje.
+                </p>";
+
             }
         }
-
-        echo "<article class='canales_article'>";
-        echo "<p id='paragraph_canales'>Información sobre el Canal: $nombreCanal</p>";
-        echo "<p id='paragraph_canales'>Autor: $userName&nbsp;</p>";
-        echo "<p id='paragraph_canales'>Descripción: $descripcionCanal</p>";
-        echo "<p id='paragraph_canales'>Fecha: $fechaCanal</p>";
-        echo "<p id='paragraph_canales'> Enlace URL:<a href=\"./showChannelDescription.php?id=" . $idChannel . "\" id='paragraph_canales'>  $urlCanal </a> </p>";
-        echo "</article>";
     }
 }
+
+// MOSTRAMOS MENSAJES RECIBIDOS
+
+echo "<h3 class='parrafo-miembros-social'> Mensajes recibidos </h3>";
 
 mysqli_close($connection);
