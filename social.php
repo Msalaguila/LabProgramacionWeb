@@ -69,7 +69,7 @@
             </div>
             <div class="row d-flex flex-row justify-content-around" style="margin-top: 20px;">
                 <div class="col-9 d-flex flex-column justify-content-center align-items-center article1_shop" style="margin-right: 10px;">
-                    <?php include('./scripts/updateUserProfile.php');?>
+                    <?php include('./scripts/updateUserProfile.php'); ?>
                 </div>
                 <div class="col d-flex flex-column article1_shop">
                     <h3 class="text-center" style="margin-top: 10px;">Opciones</h3>
@@ -88,12 +88,25 @@
                 <div class="col article1_shop">
                     <article class="text-break article1_shop">
                         <h3 style="margin-left: 10px;">Últimos mensajes públicos</h3>
-                        <?php include('./scripts/getLastMessagesSocial.php');?>
+                        <p id="lastMessages" class='parrafo-miembros-social'> </p>
                     </article>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- CONSEGUIMOS POR AJAX LOS ÚLTIMOS 5 MENSAJES DE LA RED SOCIAL-->
+    <script>
+        function get_lastMessages() {
+            $("#lastMessages").load("./scripts/getLastMessagesSocial.php");
+            setTimeout(get_lastMessages, 1000);
+        };
+    </script>
+    <script>
+        setTimeout(get_lastMessages, 1000);
+    </script>
+
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
