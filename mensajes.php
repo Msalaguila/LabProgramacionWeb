@@ -63,17 +63,15 @@
                 <div class="col-4 text-left">
                     <article class="text-center article1_shop">
                         <h1 class="text-center" id="card_header">Enviar mensaje</h1>
-                        <form method="POST" action="../laboratorioweb/scripts/login.php">
-                            Destinatario
-                            <select name="country" required>
+                        <form method="POST" action="../laboratorioweb/scripts/sendMessage.php">
+                            Destinatario: 
+                            <select name="destinatario" required>
                                 <option value="" disabled selected>--Seleccionar--</option>
-                                <option value=" india">India</option>
-                                <option value="us">Us</option>
-                                <option value="europe">Europe</option>
+                                <?php include('./scripts/getUsersToSentMessageTo.php');?>
                             </select>
-                            <textarea style="margin-top: 10px;" required></textarea>
+                            <textarea style="margin-top: 10px;" name="mensaje" required></textarea>
                             <div class="form-check" style="margin-top: 10px;">
-                                <input class="form-check-input" type="checkbox" id="formCheck-1">
+                                <input class="form-check-input" type="checkbox" id="formCheck-1" name="privado">
                                 <label class="form-check-label" for="formCheck-1">Privado</label>
                             </div>
                             <button class="btn btn-primary" type="submit" style="margin-top: 10px;margin-bottom: 10px;">ENVIAR</button>
