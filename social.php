@@ -87,9 +87,8 @@
             <div class="row" style="margin-top: 10px;">
                 <div class="col article1_shop">
                     <article class="text-break article1_shop">
-                        <h3 style="margin-left: 10px;">Muro de MyWebIoT</h3>
-                        <p class="mensajes-perfil-muro">Último mensaje público</p>
-                        <p class="mensajes-perfil-muro">Penúltimo mensaje</p>
+                        <h3 style="margin-left: 10px;">Últimos mensajes públicos</h3>
+                        <?php include('./scripts/getLastMessagesSocial.php');?>
                     </article>
                 </div>
             </div>
