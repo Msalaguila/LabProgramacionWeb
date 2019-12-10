@@ -82,7 +82,6 @@
                     <article class="article1_shop">
                         <h1 class="text-center" id="card_header">Mensajes</h1>
                         <?php include('./scripts/showMessages.php');?>
-                        <p class="parrafo-miembros-social">Paragraph</p>
                     </article>
                 </div>
             </div>

@@ -57,9 +57,13 @@ if ($result = mysqli_query($connection, $sqlMensajes)) {
                 <b>Mensaje:</b> $mensaje. 
                 <b>Receptor:</b> $nombreReceptor.
                 <b>Emisor:</b> $nombreEmisor.
-                <b>Fecha:</b> $fechaMensaje.
-                </p>";
+                <b>Fecha:</b> $fechaMensaje.";
 
+                if ($privado == 1) {
+                    echo "<b> Privado </b>";
+                }
+
+                echo "</p>";
             }
         }
     }
@@ -68,5 +72,39 @@ if ($result = mysqli_query($connection, $sqlMensajes)) {
 // MOSTRAMOS MENSAJES RECIBIDOS
 
 echo "<h3 class='parrafo-miembros-social'> Mensajes recibidos </h3>";
+
+$sqlMensajes = "SELECT * FROM mensajes WHERE receiver = $idUsuarioLogeado";
+
+if ($result = mysqli_query($connection, $sqlMensajes)) {
+    while ($row = mysqli_fetch_array($result)) {
+        $senderID = $idUsuarioLogeado;
+        $receiverID = $row["receiver"];
+        $privado = $row["privado"];
+        $fechaMensaje = $row["fecha"];
+        $mensaje = $row["mensaje"];
+
+        $sqlUser = "SELECT * FROM users WHERE id='$receiverID'";
+
+        if ($result2 = mysqli_query($connection, $sqlUser)) {
+            if ($row2 = mysqli_fetch_assoc($result2)) {
+                $nombreReceptor = $row2["nombre"];
+                $emailReceptor = $row2["email"];
+
+                echo "<p class='parrafo-miembros-social'>
+                <b>Mensaje:</b> $mensaje. 
+                <b>Receptor:</b> $nombreReceptor.
+                <b>Emisor:</b> $nombreEmisor.
+                <b>Fecha:</b> $fechaMensaje.";
+
+                if ($privado == 1) {
+                    echo "<b> Privado </b>";
+                }
+
+                echo "</p>";
+
+            }
+        }
+    }
+}
 
 mysqli_close($connection);
