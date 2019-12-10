@@ -69,7 +69,6 @@
             </div>
             <div class="row d-flex flex-row justify-content-around" style="margin-top: 20px;">
                 <div class="col-9 d-flex flex-column justify-content-center align-items-center article1_shop" style="margin-right: 10px;">
-                    <h3 style="margin-top: 10px;">Mi perfil</h3><img class="rounded-circle" src="assets/img/avatar-dhg.png">
                     <?php include('./scripts/updateUserProfile.php');?>
                 </div>
                 <div class="col d-flex flex-column article1_shop">
