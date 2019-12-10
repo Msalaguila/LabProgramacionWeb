@@ -63,10 +63,21 @@
                 <div class="col-4 text-left">
                     <article class="text-center article1_shop">
                         <h1 class="text-center" id="card_header">Enviar mensaje</h1>
-                        <div class="dropdown" style="margin-top: 10px;"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Destinatario</button>
-                            <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
-                        </div><textarea style="margin-top: 10px;"></textarea>
-                        <div class="form-check" style="margin-top: 10px;"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Privado</label></div><button class="btn btn-primary" type="button" style="margin-top: 10px;margin-bottom: 10px;">ENVIAR</button>
+                        <form method="POST" action="../laboratorioweb/scripts/login.php">
+                            Destinatario
+                            <select name="country" required>
+                                <option value="" disabled selected>--Seleccionar--</option>
+                                <option value=" india">India</option>
+                                <option value="us">Us</option>
+                                <option value="europe">Europe</option>
+                            </select>
+                            <textarea style="margin-top: 10px;" required></textarea>
+                            <div class="form-check" style="margin-top: 10px;">
+                                <input class="form-check-input" type="checkbox" id="formCheck-1">
+                                <label class="form-check-label" for="formCheck-1">Privado</label>
+                            </div>
+                            <button class="btn btn-primary" type="submit" style="margin-top: 10px;margin-bottom: 10px;">ENVIAR</button>
+                        </form>
                     </article>
                 </div>
                 <div class="col">
