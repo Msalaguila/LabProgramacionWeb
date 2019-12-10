@@ -25,10 +25,10 @@
         <div class="container-fluid"><a class="navbar-brand" id="page_icon" href="inicial.php"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav mr-auto" id="main_nav">
-                    <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="inicial.php">MyWebIoT</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="inicial.php">MyWebIoT</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="canales.php">Canales</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Ayuda</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="contacto.php">Contacto</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link normal" href="contacto.php">Contacto</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="tienda.php">MyIoT Shop</a></li>
                     <?php
                     if (isset($_SESSION["user"])) {
@@ -37,7 +37,7 @@
                         if ($nombre == "admin@gmail.com") {
                             echo "<li class='nav-item' role='presentation'><a class='nav-link' href='paginaPrincipalProductos.php'>Productos</a></li>";
                         }
-                        echo "<li class='nav-item' role='presentation'><a class='nav-link active normal' href='social.php'>MyIoT Social</a></li>";
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link active' href='social.php'>MyIoT Social</a></li>";
                     }
                     ?>
                 </ul>
@@ -59,38 +59,10 @@
     </nav>
     <section class="section_shop">
         <div class="container shop">
-            <div class="row">
-                <div class="col article1_shop">
-                    <article class="text-break article1_shop">
-                        <h1 class="article1_shop_heading">Bienvenidos a la red social de MyWebIoT</h1>
-                        <p style="padding: 2px;">ParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraphParagraph</p>
-                    </article>
-                </div>
-            </div>
-            <div class="row d-flex flex-row justify-content-around" style="margin-top: 20px;">
-                <div class="col-9 d-flex flex-column justify-content-center align-items-center article1_shop" style="margin-right: 10px;">
-                    <h3 style="margin-top: 10px;">Mi perfil</h3><img class="rounded-circle" src="assets/img/avatar-dhg.png">
-                    <?php include('./scripts/updateUserProfile.php');?>
-                </div>
-                <div class="col d-flex flex-column article1_shop">
-                    <h3 class="text-center" style="margin-top: 10px;">Opciones</h3>
-                    <div class="row">
-                        <div class="col d-flex flex-column justify-content-center align-items-center">
-                            <a href="amigos.php"> <button class="btn btn-primary opciones-perfil" type="button">Amigos</button> </a>
-                            <a href="miembros.php"> <button class="btn btn-primary opciones-perfil" type="button">Miembros</button> </a>
-                            <a href="#"> <button class="btn btn-primary opciones-perfil-naranja" type="button">Mensajes</button> </a>
-                            <a href="canalessocial.php"><button class="btn btn-primary opciones-perfil-naranja" type="button">Canales</button> </a>
-                            <a href="perfil.php"> <button class="btn btn-primary opciones-perfil-naranja" type="button">Perfil</button> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="row" style="margin-top: 10px;">
                 <div class="col article1_shop">
                     <article class="text-break article1_shop">
-                        <h3 style="margin-left: 10px;">Muro de MyWebIoT</h3>
-                        <p class="mensajes-perfil-muro">Último mensaje público</p>
-                        <p class="mensajes-perfil-muro">Penúltimo mensaje</p>
+                        <?php include('./scripts/getChannelsForUserSelectedSocial.php');?>
                     </article>
                 </div>
             </div>
