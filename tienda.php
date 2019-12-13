@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <?php session_start(); ?>
 
-
     <!-- MOSTRAMOS MENSAJE CUANDO EL USUARIO NO ESTÁ LOGEADO E INTENTA PAGAR -->
     <?php
     if (isset($_SESSION["errorLogeadoTienda"])) {
@@ -100,7 +99,7 @@
                     <article class="text-break d-flex flex-column justify-content-center align-items-center article1_shop"><a href="#canales_heading">Mostrar carrito</a>
                         <p style="padding: 2px;">Checkout</p>
 
-                        <form class="paypal" action="scripts/payments.php" method="post" id="paypal_form">
+                        <form class="paypal" action="./scripts/payments.php" method="post" id="paypal_form">
                             <input type="hidden" name="cmd" value="_xclick" />
                             <input type="hidden" name="no_note" value="1" />
                             <input type="hidden" name="lc" value="UK" />
@@ -122,6 +121,10 @@
             ?>
         </div>
     </section>
+
+    <?php 
+        echo "$paypalResponse";
+    ?>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>

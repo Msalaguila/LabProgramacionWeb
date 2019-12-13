@@ -92,3 +92,51 @@ function addPayment($data) {
 
 	return false;
 }
+
+function addPaymentToDatabse($data) {
+    insertPaymentToOrdersTable($data);
+}
+
+function insertPaymentToOrdersTable($data)
+{
+    $host = "localhost";
+    $database = "laboratorioweb";
+    $user = "root";
+    $databasePassword = "";
+
+    // 1 Stablishing connection to Database
+    $connection = mysqli_connect($host, $user, $databasePassword, $database);
+
+    // 2. Managing errors
+
+    if (mysqli_connect_errno()) {
+        die(mysqli_connect_error());
+    }
+
+    $idCliente = $data["userID"];
+    $transaccion = $data["tx"];
+    $total = $data["amt"];
+    $fecha = $data["fecha"];
+    $estado = $data["st"];
+
+    $sql = "INSERT INTO ordenes (cliente_id, transaccion, total, fecha, estado)
+                VALUES ('$idCliente', '$transaccion', '$total', '$fecha', '$estado')";
+
+    if (mysqli_query($connection, $sql)) {
+        echo "New record created successfully";
+        insertPaymentToOrdersDetailsTable($data);
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+    }
+
+    mysqli_close($connection);
+}
+
+function insertPaymentToOrdersDetailsTable($data)
+{
+    header('Location: ../loginhtml.php');
+    exit;
+
+
+
+}
