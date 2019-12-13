@@ -8,6 +8,7 @@ if (isset($_SESSION['carrito'])) {
 
     $idProducto = $_GET["id"];
     $cantidadActual = $_SESSION['carrito'][$idProducto];
+
     echo "Elemento a eliminar $idProducto <br>";
     echo "Cantidad actual: $cantidadActual";
 

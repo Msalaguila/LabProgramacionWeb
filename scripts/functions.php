@@ -124,19 +124,53 @@ function insertPaymentToOrdersTable($data)
 
     if (mysqli_query($connection, $sql)) {
         echo "New record created successfully";
-        insertPaymentToOrdersDetailsTable($data);
+
+        $sql = "SELECT * FROM ordenes WHERE transaccion='$transaccion'";
+
+        $idOrden = "";
+        $result = mysqli_query($connection, $sql);
+        if ($result) {
+            while ($row = mysqli_fetch_array($result)) {
+                $idOrden = $row["id"];
+            }
+        }
+
+        insertPaymentToOrdersDetailsTable($data, $idOrden);
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($connection);
     }
-
     mysqli_close($connection);
 }
 
-function insertPaymentToOrdersDetailsTable($data)
+function insertPaymentToOrdersDetailsTable($data, $idOrden)
 {
-    header('Location: ../loginhtml.php');
+    $host = "localhost";
+    $database = "laboratorioweb";
+    $user = "root";
+    $databasePassword = "";
+
+    $connection = mysqli_connect($host, $user, $databasePassword, $database);
+
+    foreach ($_SESSION['carrito'] as $key => $valor) {
+        $idProducto = $key;
+        $cantidadProducto = $valor;
+
+        $sql = "INSERT INTO ordenes_detalle (orden_id, producto_id, cantidad)
+                VALUES ('$idOrden', '$idProducto', '$cantidadProducto')";
+
+        if (mysqli_query($connection, $sql)) {
+
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+        }
+    }
+
+    mysqli_close($connection);
+
+    unset($_SESSION["carrito"]);
+
+    $_SESSION["compraExitosa"] = 1;
+
+    header('Location: ../tienda.php');
     exit;
-
-
-
 }

@@ -38,12 +38,13 @@
     }
     ?>
 
+    <!-- MOSTRAMOS MENSAJE CUANDO SE HA REALIZADO EL PAGO CON PAYPAL -->
     <?php
-    if (isset($_SESSION["paypal"])) {
+    if (isset($_SESSION["compraExitosa"])) {
         echo '<script language="javascript">';
-        echo 'alert($_SESSION["paypal"]")';  //not showing an alert box.
+        echo 'alert("El pago se ha realizado con éxito")';
         echo '</script>';
-        unset($_SESSION["errorCarritoVacio"]);
+        unset($_SESSION["compraExitosa"]);
     }
     ?>
 
@@ -122,9 +123,6 @@
         </div>
     </section>
 
-    <?php 
-        echo "$paypalResponse";
-    ?>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
