@@ -44,6 +44,7 @@ if ($result = mysqli_query($connection, $sqlUser)) {
         echo "<p id='paragraph_canales'>ID transacción: $transaccion</p>";
         echo "<p id='paragraph_canales'>Fecha de transaccion: $fecha</p>";
         echo "<p id='paragraph_canales'>Total ingresado: $total €</p>";
+        echo "<p id='paragraph_canales'>Estado transacción: $estado </p>";
         echo"<a href=\"./showTransactionDetails.php?id=".$transaccionID."\"><p id='paragraph_canales'>Más información acerca de esta transacción</p></a>";
         echo "</article>";
     }
