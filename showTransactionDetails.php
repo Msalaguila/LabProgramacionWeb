@@ -56,13 +56,18 @@
     </nav>
     <section id="section1">
         <div class="container">
-            <h1 id="canales_heading">Listado de todas las Transacciones</h1>
+            <?php 
+                if (isset($_GET["transactionID"])) {
+                    $transactionID = $_GET["transactionID"];
+                    echo "<h1 id='canales_heading'>Detalle de la transacción: $transactionID</h1>";
+                }
+            ?>
             <?php
             if (isset($_SESSION["user"])) {
                 $nombre = $_SESSION["user"];
                 // SI EL ADMIN ESTÁ LOGEADO MOSTRAMOS LOS PRODUCTOS CON OPCIÓN DE BORRARLOS
                 if ($nombre == "admin@gmail.com") {
-                    include("./scripts/selectAllTransactions.php");
+                    include("./scripts/selectTransactionDetails.php");
                 }
             }
             ?>

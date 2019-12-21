@@ -37,7 +37,7 @@ if ($result = mysqli_query($connection, $sqlUser)) {
         $total = $row["total"];
         $fecha = $row["fecha"];
         $estado = $row["estado"];
-        
+
         echo"<a href=\"./scripts/deleteTransaction.php?id=".$transaccionID."\" class='btn btn-danger float-right deleteButton'></a>";
         echo "<article class='canales_article'>";
         echo "<p id='paragraph_canales'>ID del cliente que realizó la transacción: $clientID</p>";
@@ -45,7 +45,7 @@ if ($result = mysqli_query($connection, $sqlUser)) {
         echo "<p id='paragraph_canales'>Fecha de transaccion: $fecha</p>";
         echo "<p id='paragraph_canales'>Total ingresado: $total €</p>";
         echo "<p id='paragraph_canales'>Estado transacción: $estado </p>";
-        echo"<a href=\"./showTransactionDetails.php?id=".$transaccionID."\"><p id='paragraph_canales'>Más información acerca de esta transacción</p></a>";
+        echo"<a href=\"./showTransactionDetails.php?id=".$transaccionID."&transactionID=$transaccion\"><p id='paragraph_canales'>Más información acerca de esta transacción</p></a>";
         echo "</article>";
     }
 }
