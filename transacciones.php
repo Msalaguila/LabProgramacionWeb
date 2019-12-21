@@ -25,20 +25,18 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav mr-auto" id="main_nav">
                     <li class="nav-item" role="presentation"><a class="nav-link nav_item" href="inicial.php">MyWebIoT</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link nav_item active normal" href="canales.php">Canales</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link nav_item normal" href="canales.php">Canales</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#">Ayuda</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link normal" href="contacto.php">Contacto</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="tienda.php">MyIoT Shop</a></li>
-                   <!--SI HAY USUARIO LOGEADO PONEMOS OPCIÓN DE MOSTRAR CANALES-->
-                   <?php
+                    <!--SI HAY USUARIO LOGEADO PONEMOS OPCIÓN DE MOSTRAR CANALES-->
+                    <?php
                     if (isset($_SESSION["user"])) {
                         $nombre = $_SESSION["user"];
-                        if ($nombre == "admin@gmail.com") {
-                            echo "<li class='nav-item' role='presentation'><a class='nav-link' href='paginaPrincipalProductos.php'>Productos</a></li>";
-                            echo "<li class='nav-item' role='presentation'><a class='nav-link' href='transacciones.php'>Transacciones</a></li>";
-                        }   
-                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='social.php'>MyIoT Social</a></li>";
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='paginaPrincipalProductos.php'>Productos</a></li>";
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link active' href='transacciones.php'>Transacciones</a></li>";
                     }
+                    echo "<li class='nav-item' role='presentation'><a class='nav-link' href='social.php'>MyIoT Social</a></li>";
                     ?>
                 </ul>
                 <ul class="nav navbar-nav ml-auto" id="right_nav">
@@ -58,10 +56,15 @@
     </nav>
     <section id="section1">
         <div class="container">
-            <a class="btn btn-primary" id="principal_button" href="nuevoCanal.php">Nuevo Canal</a>
-            <h1 id="canales_heading">Listado de todos los Canales dados de alta</h1>
+            <h1 id="canales_heading">Listado de todas las Transacciones</h1>
             <?php
-            include("../laboratorioweb/scripts/selectAllChannelsUserLogin.php");
+            if (isset($_SESSION["user"])) {
+                $nombre = $_SESSION["user"];
+                // SI EL ADMIN ESTÁ LOGEADO MOSTRAMOS LOS PRODUCTOS CON OPCIÓN DE BORRARLOS
+                if ($nombre == "admin@gmail.com") {
+                    include("./scripts/selectAllTransactions.php");
+                }
+            }
             ?>
         </div>
     </section>

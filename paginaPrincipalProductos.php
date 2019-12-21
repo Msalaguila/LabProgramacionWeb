@@ -34,7 +34,9 @@
                     if (isset($_SESSION["user"])) {
                         $nombre = $_SESSION["user"];
                         echo "<li class='nav-item' role='presentation'><a class='nav-link active' href='paginaPrincipalProductos.php'>Productos</a></li>";
+                        echo "<li class='nav-item' role='presentation'><a class='nav-link' href='transacciones.php'>Transacciones</a></li>";
                     }
+                    echo "<li class='nav-item' role='presentation'><a class='nav-link' href='social.php'>MyIoT Social</a></li>";
                     ?>
                 </ul>
                 <ul class="nav navbar-nav ml-auto" id="right_nav">
