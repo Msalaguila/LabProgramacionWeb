@@ -42,11 +42,13 @@ if ($result = mysqli_query($connection, $sqlUser)) {
         if ($result2 = mysqli_query($connection, $sqlProducto)) {
             while ($row2 = mysqli_fetch_array($result2)) {
                 $nombreProducto = $row2["nombre"];
+                $precioProducto = $row2["precio"];
         
                 echo "<article class='canales_article'>";
                 echo "<p id='paragraph_canales'>ID orden: $ordenID</p>";
                 echo "<p id='paragraph_canales'>ID producto: $productoID</p>";
                 echo "<p id='paragraph_canales'>Nombre producto: $nombreProducto</p>";
+                echo "<p id='paragraph_canales'>Precio unitario: $precioProducto €</p>";
                 echo "<p id='paragraph_canales'>Cantidad comprada: $cantidad</p>";
                 echo "</article>";
             }
