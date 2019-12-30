@@ -34,7 +34,7 @@ if ($result = mysqli_query($connection, $sql)) {
         echo "<div class='card-body d-flex flex-column justify-content-center align-items-center'>";
         echo "<h4 class='card-title'>Producto: $nombreProducto</h4>";
         echo "<p class='card-text'>Precio: $precioProducto €</p>";
-        echo "<p class='card-text'>Stock: $stockProducto </p>";
+        echo "<p class='card-text'>Stock: $stockProducto disponibles</p>";
         if ($stockProducto == 0) {
             echo "<a href=\"scripts/addItemToCart.php?id=$idProducto\"><button class='btn btn-primary' type='button' disabled>Añadir al carrito</button></a>";
         } else {

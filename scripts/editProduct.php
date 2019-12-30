@@ -3,18 +3,21 @@ session_start();
 $nameProductID = "nombreProducto";
 $priceProductID = "precioProducto";
 $descriptionProductID = "descripcion";
+$stockProductID = "stockProducto";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (
         isset($_POST[$nameProductID]) && isset($_POST[$priceProductID]) && isset($_POST[$descriptionProductID])
+        && isset($_POST[$stockProductID])
     ) {
 
         $idProducto = $_SESSION["productID"];
         $name = $_POST[$nameProductID];
         $price = $_POST[$priceProductID];
         $description = $_POST[$descriptionProductID];
+        $stock = $_POST[$stockProductID];
 
-        function saveInformationToDatabase($idProducto, $name, $price, $description, $fechaRegistro)
+        function saveInformationToDatabase($idProducto, $name, $price, $description, $stock)
         {
 
             $host = "localhost";
@@ -33,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // 4. Checking if the table is created
 
-            $sql = "UPDATE productos SET nombre = '$name', descripcion = '$description', precio = '$price' WHERE id = '$idProducto'";
+            $sql = "UPDATE productos SET nombre = '$name', descripcion = '$description', precio = '$price', stock = '$stock' WHERE id = '$idProducto'";
 
             if (mysqli_query($connection, $sql)) {
                 echo "New record created successfully";
@@ -46,8 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             mysqli_close($connection);
         }
 
-        //saveInformationToDatabase($name, $email, $passwordToSaveDatabase, $fecha);
-        saveInformationToDatabase($idProducto, $name, $price, $description, $fechaRegistro);
+
+        saveInformationToDatabase($idProducto, $name, $price, $description, $stock);
     } else {
         header('Location: nuevoproducto.html');
         exit;
