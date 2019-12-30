@@ -113,8 +113,7 @@
                 </div>
             </div>
             <div class="row shop2" style="margin-top: 20px;">
-                <div class="col d-flex justify-content-center flex-wrap">
-                    <?php include("./scripts/getAllShopProducts.php"); ?>
+                <div id="stock" class="col d-flex justify-content-center flex-wrap">
                 </div>
             </div>
             <br>
@@ -129,6 +128,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lightpick@1.3.4/lightpick.min.js"></script>
     <script src="assets/js/datepicker.js"></script>
+
+    <!-- GET THE ACTUAL PRODUCTS AND ITS CURRENT STOCK -->
+    <script>
+        function get_stock() {
+            $("#stock").load("./scripts/getAllShopProducts.php");
+            setTimeout(get_users, 100);
+        };
+
+    </script>
+    <script>
+        setTimeout(get_stock, 100);
+    </script>
 </body>
 
 </html>

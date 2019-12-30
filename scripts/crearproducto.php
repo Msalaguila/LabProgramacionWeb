@@ -3,19 +3,22 @@
 $nameProductID = "nombreProducto";
 $priceProductID = "precioProducto";
 $descriptionProductID = "descripcion";
+$stockProductoID = "stockProducto";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (
         isset($_POST[$nameProductID]) && isset($_POST[$priceProductID]) && isset($_POST[$descriptionProductID])
+        && isset($_POST[$stockProductoID])
     ) {
 
         $name = $_POST[$nameProductID];
         $price = $_POST[$priceProductID];
         $description = $_POST[$descriptionProductID];
+        $stock = $_POST[$stockProductoID];
         date_default_timezone_set("Europe/London");
         $fechaRegistro = date("Y-m-d H:i:s", $_SERVER["REQUEST_TIME"]);
 
-        function saveInformationToDatabase($name, $price, $description, $fechaRegistro)
+        function saveInformationToDatabase($name, $price, $description, $stock, $fechaRegistro)
         {
 
             $host = "localhost";
@@ -34,8 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // 4. Checking if the table is created
 
-            $sql = "INSERT INTO productos (nombre, descripcion, precio, fecha)
-                VALUES ('$name', '$description', '$price','$fechaRegistro')";
+            $sql = "INSERT INTO productos (nombre, descripcion, precio, stock, fecha)
+                VALUES ('$name', '$description', '$price', '$stock', '$fechaRegistro')";
 
             if (mysqli_query($connection, $sql)) {
                 echo "New record created successfully";
@@ -49,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         //saveInformationToDatabase($name, $email, $passwordToSaveDatabase, $fecha);
-        saveInformationToDatabase($name, $price, $description, $fechaRegistro);
+        saveInformationToDatabase($name, $price, $description, $stock, $fechaRegistro);
     } else {
         header('Location: nuevoproducto.html');
         exit;

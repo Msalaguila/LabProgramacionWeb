@@ -19,6 +19,7 @@ $nombreProducto = "";
 $descripcionProducto = "";
 $precioProducto = "";
 $fechaProducto = "";
+$stockProducto = "";
 
 if ($result = mysqli_query($connection, $sql)) {
     while ($row = mysqli_fetch_array($result)) {
@@ -27,12 +28,18 @@ if ($result = mysqli_query($connection, $sql)) {
         $precioProducto = $row["precio"];
         $fechaProducto = $row["fecha"];
         $idProducto = $row["id"];
+        $stockProducto = $row["stock"];
 
         echo "<div class='card item'>";
         echo "<div class='card-body d-flex flex-column justify-content-center align-items-center'>";
         echo "<h4 class='card-title'>Producto: $nombreProducto</h4>";
         echo "<p class='card-text'>Precio: $precioProducto €</p>";
-        echo "<a href=\"scripts/addItemToCart.php?id=$idProducto\"><button class='btn btn-primary' type='button'>Añadir al carrito</button></a>";
+        echo "<p class='card-text'>Stock: $stockProducto </p>";
+        if ($stockProducto == 0) {
+            echo "<a href=\"scripts/addItemToCart.php?id=$idProducto\"><button class='btn btn-primary' type='button' disabled>Añadir al carrito</button></a>";
+        } else {
+            echo "<a href=\"scripts/addItemToCart.php?id=$idProducto\"><button class='btn btn-primary' type='button'>Añadir al carrito</button></a>";
+        }
         echo "</div>";
         echo "</div>";
     }
